@@ -1,150 +1,78 @@
-# 🚀 Farish Ilham Syahrani (Rishy) - Personal Portfolio
+# 🌐 Rishy Portfolio
 
-<div align="center">
-
-  [![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-  [![React](https://img.shields.io/badge/React-19.2.4-blue?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-  [![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-
-  <p align="center">
-    Website portofolio profesional dan interaktif milik <b>Farish Ilham Syahrani (Rishy)</b> — <i>Fresh Graduate</i> S1 Teknik Informatika (Universitas Trunojoyo Madura), <b>Web Developer</b> & <b>Machine Learning Engineer</b>.
-  </p>
-
-  <p align="center">
-    <a href="https://github.com/farishilhams/Website-Portofolio"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="mailto:farishilham.s@gmail.com">Contact Me</a>
-    ·
-    <a href="https://wa.me/6287850566785">WhatsApp</a>
-    ·
-    <a href="https://www.linkedin.com/in/farish-ilham-syahrani/">LinkedIn</a>
-    ·
-    <a href="https://github.com/farishilhams">GitHub</a>
-  </p>
-
-</div>
+A modern, interactive, and responsive personal portfolio website built with **Next.js 16 (App Router)**, **Turbopack**, **Tailwind CSS**, and **TypeScript**.
 
 ---
 
-## 🌟 Overview
-
-Website portofolio ini dirancang menggunakan arsitektur modern **Next.js 16 App Router**, **Turbopack**, **Tailwind CSS v4**, dan **TypeScript**. Memadukan estetika visual premium, performa tinggi, animasi interaktif halus dengan **Framer Motion**, serta fitur asisten cerdas **AI Chatbot** interaktif dengan *streaming responses*.
-
----
-
-## ✨ Fitur Unggulan
-
-- 🎨 **Modern & Premium UI/UX**: Desain clean, tipografi terkurasi, kontras harmonis, dan efek mikro-interaksi modern (*glare hover*, *smooth reveals*).
-- 🤖 **Interactive AI Assistant (Rishy Bot)**:
-  - Asisten AI pintar yang siap menjawab pertanyaan pengunjung tentang latar belakang, keahlian, proyek, dan kontak Rishy.
-  - Mendukung penyedia AI fleksibel (Groq / OpenAI / NVIDIA NIM) dengan format *streaming response*.
-  - Dilengkapi **Intelligent Local Knowledge-Base Fallback Engine** sehingga chatbot tetap dapat menjawab secara akurat tanpa bergantung pada API eksternal.
-- 💼 **Selected Works Showcase**:
-  - Kartu proyek interaktif dengan tag teknologi, modal detail, dan tautan live demo / GitHub.
-  - Optimasi gambar berbasis *Static Imports* & *Content Hashing* otomatis dari Next.js untuk tampilan tajam tanpa distorsi.
-- 🛠️ **Tech Stack & Skills Matrix**: Penataan keahlian komprehensif mulai dari Front-End, Back-End & AI/ML, Databases (SQL & Neo4j Graph DB), hingga Tools & Infrastructure.
-- 📍 **Embedded Location Map**: Peta interaktif berbasis Google Maps embed resmi (Kamal, Bangkalan, Madura, Jawa Timur).
-- 📱 **Fully Responsive**: Tampilan adaptif presisi di seluruh resolusi layar (Mobile slider tak terbatas, Tablet, hingga Desktop 4K).
-- 🔍 **SEO & Performance Optimized**: Konfigurasi OpenGraph metadata dinamis, `sitemap.xml`, dan `robots.txt` terstruktur rapi.
-
----
-
-## 📁 Karya & Proyek Unggulan
-
-| # | Nama Proyek | Kategori | Tech Stack | Tautan |
-| :-: | :--- | :--- | :--- | :--- |
-| **01** | **BatikGems E-Commerce** | Web Application & E-Commerce | PHP, MySQL, RajaOngkir API, JavaScript, Bootstrap | [Demo](https://batikgems.infinityfreeapp.com) · [Repo](https://github.com/farishilhams/E-Commerce-Batik) |
-| **02** | **MPStore Web Panel** | Enterprise Web Platform | React 19, Vite, Express.js, TypeScript, Supabase, Tailwind CSS | [Demo](https://website-panel-mpstore.vercel.app/) · [Repo](https://github.com/farishilhams/Website-Panel) |
-| **03** | **GraphRAG Search Engine** | AI / ML & Search Platform | Python, Streamlit, GraphRAG, Knowledge Graphs, Neo4j, LLM | [Demo](https://graphrag-search-engine.streamlit.app/) · [Repo](https://github.com/farishilhams/GraphRAG-Search-Engine) |
-
----
-
-## 🛠️ Tech Stack Codebase
+## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router & Turbopack)
-- **Library UI**: [React 19](https://react.dev/)
-- **Bahasa**: [TypeScript 5](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animasi**: [Framer Motion](https://www.framer.com/motion/)
-- **AI & Integrasi**: [OpenAI SDK](https://github.com/openai/openai-node), React Markdown, Remark GFM
-- **Email Service**: [Nodemailer](https://nodemailer.com/)
+- **UI Library**: [React 19](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **AI Integration**: [OpenAI SDK](https://github.com/openai/openai-node) (compatible with Groq / OpenAI / NVIDIA NIM)
+- **Deployment**: [Vercel](https://vercel.com/)
 
 ---
 
-## 📂 Struktur Direktori
+## 🚀 Getting Started
 
-```text
-Website-Portofolio/
-├── app/
-│   ├── api/
-│   │   ├── chat/route.ts        # Route handler AI Chatbot (Streaming & Fallback)
-│   │   └── send-email/route.ts  # Route handler kirim pesan kontak
-│   ├── about.tsx                # Komponen section Tentang Saya
-│   ├── contact.tsx              # Komponen Kontak, Maps, & Modal Chatbot AI
-│   ├── experience.tsx           # Komponen section Pengalaman & Sertifikasi
-│   ├── hero.tsx                 # Komponen Hero section & CV download
-│   ├── layout.tsx               # Root layout & SEO Metadata
-│   ├── page.tsx                 # Halaman utama (Single Page Application)
-│   ├── project.tsx              # Komponen Selected Works & Modal Preview
-│   ├── robots.ts                # SEO Robots configuration
-│   ├── sitemap.ts               # XML Sitemap generator
-│   └── tech-stack.tsx           # Komponen Tech Stack matrix
-├── components/                  # Komponen UI umum, Loader, & Animasi
-├── public/
-│   ├── cv/                      # Berkas CV resmi
-│   ├── icons/                   # Ikon SVG Tech Stack resmi
-│   └── images/                  # Aset foto profil & thumbnail proyek
-├── styles/                      # Konfigurasi CSS & Tailwind styling
-├── .env.example                 # Template variabel lingkungan (AI & Email)
-├── .gitignore                   # Aturan proteksi file rahasia Git
-├── tsconfig.json                # Konfigurasi TypeScript compiler
-└── package.json                 # Manajemen dependensi proyek
-```
+Follow these steps to run the project locally on your machine.
 
----
+### 1. Prerequisites
+Make sure you have installed:
+- [Node.js](https://nodejs.org/) (v18.17.0 or higher recommended)
+- [npm](https://www.npmjs.com/) (or yarn / pnpm)
+- [Git](https://git-scm.com/)
 
-## 🚀 Panduan Menjalankan Proyek Lokal
-
-### 1. Clone Repositori
+### 2. Clone the Repository
 ```bash
 git clone https://github.com/farishilhams/Website-Portofolio.git
 cd Website-Portofolio
 ```
 
-### 2. Install Dependensi
+### 3. Install Dependencies
 ```bash
 npm install
 ```
 
-### 3. Konfigurasi Environment Variables (Opsional)
-Salin file `.env.example` menjadi `.env.local`:
+### 4. Setup Environment Variables (Optional)
+Copy the example environment file:
 ```bash
 cp .env.example .env.local
 ```
-Isi variabel jika ingin menggunakan live API Key AI atau email:
-```env
-# AI Assistant (Pilih salah satu)
-GROQ_API_KEY=
-OPENAI_API_KEY=
-NVIDIA_APIKEY=
 
-# Email Form
+Inside `.env.local`, you can configure an AI provider API key if you want live LLM responses for the AI assistant chatbot:
+```env
+# AI Assistant Provider (Choose one - optional)
+# Groq (Recommended - Fast & Free tier): https://console.groq.com
+GROQ_API_KEY=
+GROQ_MODEL=llama-3.3-70b-versatile
+
+# OpenAI: https://platform.openai.com
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4o-mini
+
+# NVIDIA NIM: https://build.nvidia.com
+NVIDIA_APIKEY=
+NVIDIA_MODEL=meta/llama-3.1-70b-instruct
+
+# Email Contact Form (Optional)
 EMAIL_USER=
 EMAIL_PASS=
 ```
-*(Catatan: Jika dikosongkan, chatbot otomatis berjalan menggunakan Intelligent Local Knowledge-Base Rishy).*
+> **Note:** If no API keys are provided, the chatbot will run in local knowledge-base fallback mode without throwing any errors.
 
-### 4. Jalankan Development Server
+### 5. Run the Development Server
 ```bash
 npm run dev
 ```
-Buka browser di [http://localhost:3000](http://localhost:3000).
 
-### 5. Build Produksi
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+
+### 6. Build for Production
+To test the production build locally:
 ```bash
 npm run build
 npm run start
@@ -152,26 +80,47 @@ npm run start
 
 ---
 
-## ☁️ Panduan Deployment ke Vercel
+## ☁️ Deployment
 
-1. Buka [Vercel](https://vercel.com) dan login via akun GitHub Anda.
-2. Klik **Add New...** -> **Project**.
-3. Pilih repository **`farishilhams/Website-Portofolio`** lalu klik **Import**.
-4. Di bagian **Environment Variables**, tambahkan API key Anda (misal `GROQ_API_KEY` atau `OPENAI_API_KEY`).
-5. Klik **Deploy**. Website portofolio Anda langsung aktif secara global!
+### Deploy to Vercel
+The easiest way to deploy this Next.js app is with [Vercel](https://vercel.com):
 
----
-
-## 📬 Hubungi Saya
-
-- **Nama**: Farish Ilham Syahrani (Rishy)
-- **Email**: [farishilham.s@gmail.com](mailto:farishilham.s@gmail.com)
-- **WhatsApp**: [+62 878-5056-6785](https://wa.me/6287850566785)
-- **LinkedIn**: [linkedin.com/in/farish-ilham-syahrani](https://www.linkedin.com/in/farish-ilham-syahrani/)
-- **GitHub**: [github.com/farishilhams](https://github.com/farishilhams)
+1. Push your repository to GitHub.
+2. Log in to [Vercel](https://vercel.com) and click **Add New... > Project**.
+3. Import your repository (`Website-Portofolio`).
+4. (Optional) Add your Environment Variables (`GROQ_API_KEY`, etc.) in the Project Settings.
+5. Click **Deploy**.
 
 ---
 
-<p align="center">
-  Dibuat dengan ❤️ oleh <b>Farish Ilham Syahrani (Rishy)</b> · &copy; 2026 Seluruh Hak Cipta Dilindungi.
-</p>
+## 📁 Project Structure
+
+```text
+Website-Portofolio/
+├── app/
+│   ├── api/
+│   │   ├── chat/route.ts        # AI Chatbot route handler
+│   │   └── send-email/route.ts  # Contact email route handler
+│   ├── about.tsx                # About section
+│   ├── contact.tsx              # Contact section & AI chatbot modal
+│   ├── experience.tsx           # Experience section
+│   ├── hero.tsx                 # Hero section
+│   ├── layout.tsx               # Root layout & SEO metadata
+│   ├── page.tsx                 # Main page entry
+│   ├── project.tsx              # Projects showcase section
+│   ├── robots.ts                # Robots.txt configuration
+│   ├── sitemap.ts               # Sitemap generator
+│   └── tech-stack.tsx           # Skills & tech stack section
+├── components/                  # Reusable UI components and animations
+├── public/                      # Static assets (images, icons, documents)
+├── styles/                      # Global styles and Tailwind configuration
+├── .env.example                 # Example environment variables
+├── .gitignore                   # Git ignore rules
+└── package.json                 # Project dependencies & scripts
+```
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
