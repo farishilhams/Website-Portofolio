@@ -229,15 +229,40 @@ export async function POST(req: NextRequest) {
       { role: "user", content: userText },
     ]
 
+    let completion: any
+
     try {
-      const completion = await client.chat.completions.create({
+      completion = await client.chat.completions.create({
         model: modelName,
         messages: messages as any,
         temperature: 0.7,
         max_tokens: 1024,
         stream: true,
       })
+    } catch (initialError: any) {
+      console.warn(`[Chat API] Percobaan pertama dengan model '${modelName}' gagal: ${initialError?.message || initialError}`)
 
+      // Jika Groq mengembalikan error (misal 404 model not found pada llama), otomatis fallback ke model groq/compound-mini yang aktif
+      if (groqKey && modelName !== "groq/compound-mini") {
+        try {
+          console.log("[Chat API] Mengalihkan ke model Groq aktif: 'groq/compound-mini'...")
+          completion = await client.chat.completions.create({
+            model: "groq/compound-mini",
+            messages: messages as any,
+            temperature: 0.7,
+            max_tokens: 1024,
+            stream: true,
+          })
+        } catch (retryError) {
+          console.error("[Chat API] Retry dengan groq/compound-mini juga gagal:", retryError)
+          throw retryError
+        }
+      } else {
+        throw initialError
+      }
+    }
+
+    try {
       const encoder = new TextEncoder()
       const readable = new ReadableStream({
         async start(controller) {
@@ -267,51 +292,57 @@ export async function POST(req: NextRequest) {
     } catch (apiError: any) {
       console.error("[Chat API Provider Error]:", apiError)
 
-      // Analisis status error spesifik dari provider AI
-      const status = apiError?.status || apiError?.statusCode || 500
+      // Fallback universal: Jika terjadi kendala apa pun pada provider AI,
+      // selalu berikan respons cerdas lokal agar chatbot pengunjung tidak pernah rusak / error di UI
+      const fallbackText = generateFallbackResponse(userText)
 
-      // Jika error adalah kuota habis (429) atau auth (401), aktifkan fallback response cerdas
-      // sehingga pengunjung tetap mendapatkan jawaban informatif tanpa tampilan error rusak
-      if (status === 429 || status === 401 || status === 500) {
-        console.warn(`[Chat API] Fallback diaktifkan akibat status error provider: ${status}`)
-        const fallbackText = generateFallbackResponse(userText)
-
-        const encoder = new TextEncoder()
-        const readable = new ReadableStream({
-          async start(controller) {
-            const words = fallbackText.split(" ")
-            for (let i = 0; i < words.length; i++) {
-              const chunk = (i === 0 ? "" : " ") + words[i]
-              controller.enqueue(encoder.encode(chunk))
-              await new Promise((r) => setTimeout(r, 12))
-            }
-            controller.close()
-          },
-        })
-
-        return new Response(readable, {
-          status: 200,
-          headers: {
-            "Content-Type": "text/plain; charset=utf-8",
-            "Cache-Control": "no-cache, no-transform",
-            "Connection": "keep-alive",
-          },
-        })
-      }
-
-      return NextResponse.json(
-        {
-          success: false,
-          message: apiError?.message || "Terjadi kesalahan pada layanan AI provider.",
+      const encoder = new TextEncoder()
+      const readable = new ReadableStream({
+        async start(controller) {
+          const words = fallbackText.split(" ")
+          for (let i = 0; i < words.length; i++) {
+            const chunk = (i === 0 ? "" : " ") + words[i]
+            controller.enqueue(encoder.encode(chunk))
+            await new Promise((r) => setTimeout(r, 12))
+          }
+          controller.close()
         },
-        { status: typeof status === "number" && status >= 400 && status < 600 ? status : 500 }
-      )
+      })
+
+      return new Response(readable, {
+        status: 200,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "no-cache, no-transform",
+          "Connection": "keep-alive",
+        },
+      })
     }
   } catch (error: any) {
     console.error("[Chat API Fatal Error]:", error)
-    return NextResponse.json(
-      { success: false, message: error?.message || "Gagal memproses permintaan chat." },
-      { status: 500 }
-    )
+    
+    // Fallback darurat jika ada parsing error fatal
+    const fallbackText = "Halo! Saya asisten AI untuk Farish Ilham Syahrani (Rishy). Ada yang bisa saya bantu seputar proyek atau portofolio Rishy?"
+    const encoder = new TextEncoder()
+    const readable = new ReadableStream({
+      async start(controller) {
+        const words = fallbackText.split(" ")
+        for (let i = 0; i < words.length; i++) {
+          const chunk = (i === 0 ? "" : " ") + words[i]
+          controller.enqueue(encoder.encode(chunk))
+          await new Promise((r) => setTimeout(r, 12))
+        }
+        controller.close()
+      },
+    })
+
+    return new Response(readable, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache, no-transform",
+        "Connection": "keep-alive",
+      },
+    })
   }
 }
