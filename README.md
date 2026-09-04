@@ -1,10 +1,10 @@
-# Rishy Portofolio v2
+# Rishy Portofolio 
 
 A modern, interactive, and responsive personal portofolio website for Farish Ilham Syahrani (Rishy), built to showcase projects, skills, and experience.
 
 ## 🌐 Live Demo
 
-Check out the live website here: **[https://rishy.my.id](https://rishy.my.id)**
+Check out the live website here: 
 
 ## 🚀 Features
 
