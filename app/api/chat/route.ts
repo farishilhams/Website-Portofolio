@@ -163,7 +163,17 @@ export async function POST(req: NextRequest) {
         apiKey: groqKey,
         baseURL: "https://api.groq.com/openai/v1",
       })
-      modelName = process.env.GROQ_MODEL || "llama-3.3-70b-versatile"
+      // Normalisasi model Groq agar otomatis membetulkan format spasi / typo umum
+      const rawModel = (process.env.GROQ_MODEL || "").trim().toLowerCase().replace(/\s+/g, "-")
+      if (rawModel.includes("8b")) {
+        modelName = "llama-3.1-8b-instant"
+      } else if (rawModel.includes("70b") || rawModel.includes("3.3")) {
+        modelName = "llama-3.3-70b-versatile"
+      } else if (rawModel) {
+        modelName = rawModel
+      } else {
+        modelName = "llama-3.3-70b-versatile"
+      }
     } else if (openAiKey) {
       client = new OpenAI({
         apiKey: openAiKey,
