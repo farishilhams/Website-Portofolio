@@ -43,10 +43,7 @@ export const metadata: Metadata = {
     creator: "@farishsyahrani",
   },
   icons: {
-    icon: [
-      { url: "/icons/icon.svg", type: "image/svg+xml" },
-      { url: "/icons/favicon.ico", sizes: "any" },
-    ],
+    icon: "/icons/icon.svg",
     shortcut: "/favicon.ico",
     apple: "/icons/icon.svg",
   },
