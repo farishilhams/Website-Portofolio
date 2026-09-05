@@ -169,8 +169,12 @@ html {
 .animate-infinite-scroll {
   animation: infinite-scroll 25s linear infinite;
   width: max-content;
+  will-change: transform;
 }
 
-.animate-infinite-scroll:hover {
-  animation-play-state: paused;
+/* Hanya pause saat hover pada perangkat kursor desktop (mouse), cegah sticky hover pada mobile touchscreen */
+@media (hover: hover) and (pointer: fine) {
+  .animate-infinite-scroll:hover {
+    animation-play-state: paused;
+  }
 }

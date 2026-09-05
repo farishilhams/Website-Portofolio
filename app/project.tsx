@@ -1,6 +1,6 @@
 "use client"
 import Image, { type StaticImageData } from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import FadeDown from "@/components/animations/FadeDown"
 import FadeUp from "@/components/animations/FadeUp"
@@ -26,6 +26,20 @@ interface ProjectItem {
 
 export default function Project() {
   const [isOpen, setIsOpen] = useState<number | null>(null)
+  const mobileSliderRef = useRef<HTMLDivElement>(null)
+
+  // Touch event handlers untuk mobile touch agar tidak freeze setelah disentuh
+  const handleTouchStart = () => {
+    if (mobileSliderRef.current) {
+      mobileSliderRef.current.style.animationPlayState = "paused"
+    }
+  }
+
+  const handleTouchEnd = () => {
+    if (mobileSliderRef.current) {
+      mobileSliderRef.current.style.animationPlayState = "running"
+    }
+  }
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -103,9 +117,15 @@ export default function Project() {
           ))}
         </div>
 
-        {/* Mobile & Tablet View: Infinite Loop Slider */}
-        <div className="lg:hidden w-full overflow-hidden relative py-4">
-          <div className="flex w-max animate-infinite-scroll hover:[animation-play-state:paused]">
+        {/* Mobile & Tablet View: Infinite Loop Slider with Touch Pan */}
+        <div className="lg:hidden w-full overflow-hidden relative py-4 touch-pan-x">
+          <div
+            ref={mobileSliderRef}
+            className="flex w-max animate-infinite-scroll cursor-grab active:cursor-grabbing"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
+          >
             <div className="flex gap-6 px-3">
               {projectList.map((project, index) => (
                 <div key={`mobile1-${index}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
