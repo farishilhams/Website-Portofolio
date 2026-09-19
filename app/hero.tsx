@@ -97,17 +97,28 @@ export default function Hero() {
         <FadeRight>
           <div className="flex flex-col items-center justify-center relative mt-12 md:mt-0">
             {/* Subtle aesthetic backdrop instead of neon glow */}
-            <div className="absolute inset-0 bg-linear-to-tr from-thirdary to-background rounded-full scale-110 opacity-50 blur-2xl"></div>
+            <div className="absolute inset-0 bg-linear-to-tr from-thirdary to-background rounded-full scale-110 opacity-50 blur-2xl pointer-events-none"></div>
 
-            <div className="relative z-10 p-2 bg-background border border-text-secondary/10 rounded-full shadow-2xl">
-              <Image src="/images/profile.jpg" alt="Farish Ilham Syahrani" width={400} height={400} className="rounded-full object-cover aspect-square floating transition-all duration-700" priority />
+            <div className="relative z-10 p-2 sm:p-2.5 bg-background border border-text-secondary/10 rounded-full shadow-2xl">
+              <Image
+                src="/images/profile.jpg"
+                alt="Farish Ilham Syahrani"
+                width={400}
+                height={400}
+                className="w-64 h-64 sm:w-72 sm:h-72 md:w-[340px] md:h-[340px] lg:w-[400px] lg:h-[400px] rounded-full object-cover aspect-square floating transition-all duration-700"
+                priority
+              />
             </div>
 
-            {/* Quick Stats redesigned as floating minimal badges */}
-            <div className="absolute -bottom-10 md:-bottom-12 -left-4 md:-left-12 z-20 flex flex-col gap-3">
+            {/* Quick Stats: stacked cleanly below photo on mobile, floating on desktop */}
+            <div className="relative mt-8 md:mt-0 md:absolute md:-bottom-10 lg:-bottom-12 md:-left-8 lg:-left-12 z-20 flex flex-col gap-2.5 sm:gap-3 w-full sm:w-auto items-center md:items-start">
               {quickStatsList.map((stat, index) => (
-                <div className={`floating flex items-center gap-3 bg-background/90 backdrop-blur-md border border-text-secondary/10 p-3 pr-5 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300 animate-in fade-in slide-in-from-bottom-5`} style={{ animationDelay: `${index * 150}ms` }} key={index}>
-                  <div className="bg-text-primary text-background p-2 rounded-xl">{stat.icon}</div>
+                <div
+                  className="floating flex items-center gap-3 bg-background/90 backdrop-blur-md border border-text-secondary/10 p-2.5 sm:p-3 pr-4 sm:pr-5 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300 animate-in fade-in slide-in-from-bottom-5 w-fit"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                  key={index}
+                >
+                  <div className="bg-text-primary text-background p-2 rounded-xl shrink-0">{stat.icon}</div>
                   <span className="text-xs md:text-sm font-semibold text-text-primary whitespace-nowrap">{stat.message}</span>
                 </div>
               ))}
