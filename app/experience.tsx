@@ -6,7 +6,6 @@ import FadeDown from "@/components/animations/FadeDown"
 
 interface ExperienceImage {
   src: string
-  fullSrc?: string
   alt: string
   title: string
 }
@@ -32,13 +31,11 @@ const experiences: ExperienceItem[] = [
     images: [
       {
         src: "/images/experience/mpstore-certificate.jpg",
-        fullSrc: "/images/experience/mpstore-certificate.jpg",
         alt: "Sertifikat Magang MPStore SuperApps - Farish Ilham Syahrani",
         title: "Sertifikat Magang Industri",
       },
       {
         src: "/images/experience/mpstore-team.jpg",
-        fullSrc: "/images/experience/mpstore-team-full.jpg",
         alt: "Foto Bersama Tim Magang MPStore SuperApps",
         title: "Foto Bersama Tim",
       },
@@ -185,7 +182,7 @@ export default function Experience() {
               <div className="relative flex-1 min-h-[300px] sm:min-h-[450px] md:min-h-[550px] bg-black/5 dark:bg-black/30 p-2 sm:p-4 flex items-center justify-center">
                 <div className="relative w-full h-full min-h-[300px] sm:min-h-[450px] md:min-h-[550px]">
                   <Image
-                    src={selectedImage.fullSrc || selectedImage.src}
+                    src={selectedImage.src}
                     alt={selectedImage.alt}
                     fill
                     className="object-contain"
