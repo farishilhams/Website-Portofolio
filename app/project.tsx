@@ -74,7 +74,7 @@ export default function Project() {
                   <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
 
                   {/* Tech Stack Overlay */}
-                  <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-[-10px] group-hover:translate-y-0">
+                  <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10">
                     {project.tech.slice(0, 3).map((tech, i) => (
                       <span key={i} className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">
                         {tech}
@@ -134,7 +134,7 @@ export default function Project() {
                       <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
 
                       {/* Tech Stack Overlay */}
-                      <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-[-10px] group-hover:translate-y-0">
+                      <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10">
                         {project.tech.slice(0, 3).map((tech, i) => (
                           <span key={i} className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">
                             {tech}
@@ -185,7 +185,7 @@ export default function Project() {
                       <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
 
                       {/* Tech Stack Overlay */}
-                      <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-[-10px] group-hover:translate-y-0">
+                      <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10">
                         {project.tech.slice(0, 3).map((tech, i) => (
                           <span key={i} className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">
                             {tech}
