@@ -42,7 +42,7 @@ export default function About() {
               <div className="flex flex-col">
                 <Fade>
                   <h4 className="text-lg md:text-xl font-bold text-text-primary mb-4 flex items-center border-b border-text-secondary/20 pb-4">Who Am I</h4>
-                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya Web Developer dan Machine Learning Engineer yang berpengalaman dalam merancang dan mengembangkan aplikasi modern menggunakan React.js, Next.js, Node.js, Express.js, Laravel, dan Python. Saya terampil dalam membangun RESTful APIs, merancang arsitektur backend, serta mengembangkan model Machine Learning dan Deep Learning untuk menghasilkan solusi cerdas berbasis data.</p>
+                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya Full Stack Developer dan Machine Learning Engineer yang berpengalaman dalam merancang dan mengembangkan aplikasi modern menggunakan React.js, Next.js, Node.js, Express.js, Laravel, dan Python. Saya terampil dalam membangun RESTful APIs, merancang arsitektur backend, serta mengembangkan model Machine Learning dan Deep Learning untuk menghasilkan solusi cerdas berbasis data.</p>
                 </Fade>
               </div>
 
@@ -110,7 +110,7 @@ export default function About() {
 
         <Fade>
           <div className="mt-24 md:mt-32 pb-6 border-text-secondary/10">
-            <ScrollVelocity texts={["Hello I'm Rishy", "Web Developer", "Machine Learning Engineer"]} velocity={velocity} className="font-black tracking-tighter text-thirdary dark:text-button-hover opacity-50" />
+            <ScrollVelocity texts={["Hello I'm Rishy", "Full Stack Developer", "Machine Learning Engineer"]} velocity={velocity} className="font-black tracking-tighter text-thirdary dark:text-button-hover opacity-50" />
           </div>
         </Fade>
       </section>

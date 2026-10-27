@@ -73,7 +73,7 @@ export default function Contact() {
       {
         id: "welcome-msg",
         sender: "bot",
-        text: "Halo! Saya adalah asisten AI Rishy. Ada yang bisa saya bantu terkait portofolio, keahlian, pengalaman, atau proyek Rishy?",
+        text: "Halo! Saya adalah asisten AI Rishy. Ada yang bisa saya bantu terkait portfolio, keahlian, pengalaman, atau proyek Rishy?",
         timestamp: new Date()
       }
     ])
@@ -110,14 +110,14 @@ export default function Contact() {
     const history = [
       {
         role: "system" as const,
-        content: `System Context: Kamu adalah Rishy Assistant, asisten AI pribadi untuk Farish Ilham Syahrani (panggilan: Rishy). Tugasmu adalah menjawab pertanyaan pengunjung website portofolio Rishy dengan ramah, profesional, dan informatif menggunakan bahasa Indonesia.
+        content: `System Context: Kamu adalah Rishy Assistant, asisten AI pribadi untuk Farish Ilham Syahrani (panggilan: Rishy). Tugasmu adalah menjawab pertanyaan pengunjung website portfolio Rishy dengan ramah, profesional, dan informatif menggunakan bahasa Indonesia.
         
 Gunakan panduan informasi berikut tentang Rishy (Farish Ilham Syahrani) untuk menjawab pertanyaan:
 
 1. **Profil & Kontak**:
    - Nama Lengkap: Farish Ilham Syahrani
    - Nama Panggilan / Brand: Rishy
-   - Peran / Profesi: Web Developer dan Machine Learning Engineer (Fresh Graduate S1 Teknik Informatika)
+   - Peran / Profesi: Full Stack Developer dan Machine Learning Engineer (Fresh Graduate S1 Teknik Informatika)
    - Pendidikan: S1 Teknik Informatika, Universitas Trunodjoyo Madura (2022 - 2026, IPK: 3.70)
    - Lokasi: Kamal, Kab. Bangkalan, Jawa Timur, Indonesia
    - Email: farishilham.s@gmail.com
@@ -194,7 +194,7 @@ Aturan: Jawab langsung ke intinya, jangan menambahkan informasi palsu di luar pr
       const contentType = response.headers.get("Content-Type") || ""
       if (contentType.includes("application/json")) {
         const data = await response.json()
-        const botReply = data.message || data.reply || data.text || "Halo! Ada yang bisa saya bantu terkait portofolio Rishy?"
+        const botReply = data.message || data.reply || data.text || "Halo! Ada yang bisa saya bantu terkait portfolio Rishy?"
         setIsChatLoading(false)
         setChatMessages(prev => [...prev, {
           id: (Date.now() + 1).toString(),

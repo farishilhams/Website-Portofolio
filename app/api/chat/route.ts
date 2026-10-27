@@ -7,15 +7,15 @@ interface HistoryEntry {
 }
 
 // System prompt resmi yang merepresentasikan persona Farish Ilham Syahrani (Rishy)
-const RISHY_SYSTEM_PROMPT = `Kamu adalah Rishy Assistant, asisten AI cerdas dan ramah untuk website portofolio Farish Ilham Syahrani (Rishy).
-Tugas utamamu adalah menjawab pertanyaan pengunjung website portofolio mengenai latar belakang, keahlian, pengalaman kerja, proyek, dan kontak Rishy secara akurat, profesional, dan solutif dalam Bahasa Indonesia.
+const RISHY_SYSTEM_PROMPT = `Kamu adalah Rishy Assistant, asisten AI cerdas dan ramah untuk website portfolio Farish Ilham Syahrani (Rishy).
+Tugas utamamu adalah menjawab pertanyaan pengunjung website portfolio mengenai latar belakang, keahlian, pengalaman kerja, proyek, dan kontak Rishy secara akurat, profesional, dan solutif dalam Bahasa Indonesia.
 
 Berikut adalah profil lengkap dan terverifikasi mengenai Rishy:
 1. **Identitas & Profil**:
    - Nama Lengkap: Farish Ilham Syahrani
    - Nama Panggilan / Brand: Rishy
    - Gelar & Status: Fresh Graduate S1 Teknik Informatika (Universitas Trunojoyo Madura, 2022 - 2026, IPK: 3.70)
-   - Spesialisasi / Profesi: Web Developer & Machine Learning Engineer
+   - Spesialisasi / Profesi: Full Stack Developer & Machine Learning Engineer
    - Domisili / Lokasi: Kamal, Kab. Bangkalan, Madura, Jawa Timur, Indonesia
    - Karakter Kerja: Berorientasi pada arsitektur bersih (clean code), performa tinggi, desain modern responsif, serta pemanfaatan data & machine learning.
 
@@ -53,7 +53,7 @@ Berikut adalah profil lengkap dan terverifikasi mengenai Rishy:
 
 Instruksi Menjawab:
 - Berikan respon yang ramah, sopan, to the point, dan terstruktur rapi (gunakan poin atau markdown bila sesuai).
-- Jika ada pertanyaan di luar konteks portofolio Rishy, jawablah secara singkat dan arahkan kembali ke topik portofolio atau kontak Rishy.
+- Jika ada pertanyaan di luar konteks portfolio Rishy, jawablah secara singkat dan arahkan kembali ke topik portfolio atau kontak Rishy.
 - Jangan mengarang data di luar profil di atas.`
 
 /**
@@ -74,12 +74,12 @@ Ada yang bisa saya bantu terkait:
   }
 
   if (q.includes("siapa") || q.includes("tentang") || q.includes("profil") || q.includes("bio") || q.includes("background")) {
-    return `**Farish Ilham Syahrani (Rishy)** adalah seorang **Web Developer & Machine Learning Engineer** (Fresh Graduate S1 Teknik Informatika dari **Universitas Trunojoyo Madura** dengan IPK **3.70**).
+    return `**Farish Ilham Syahrani (Rishy)** adalah seorang **Full Stack Developer & Machine Learning Engineer** (Fresh Graduate S1 Teknik Informatika dari **Universitas Trunojoyo Madura** dengan IPK **3.70**).
 
 Rishy berfokus pada pengembangan aplikasi web modern berperforma tinggi (React, Next.js, TypeScript, Express.js) serta penerapan kecerdasan buatan berbasis data dan Knowledge Graphs (Python, PyTorch, GraphRAG, Neo4j).`
   }
 
-  if (q.includes("proyek") || q.includes("project") || q.includes("portofolio") || q.includes("karya") || q.includes("aplikasi") || q.includes("batik") || q.includes("mpstore") || q.includes("graphrag")) {
+  if (q.includes("proyek") || q.includes("project") || q.includes("portfolio") || q.includes("portofolio") || q.includes("karya") || q.includes("aplikasi") || q.includes("batik") || q.includes("mpstore") || q.includes("graphrag")) {
     return `Berikut 3 karya proyek unggulan Rishy:
 
 1. 🛍️ **BatikGems E-Commerce**:
@@ -128,7 +128,7 @@ Rishy berfokus pada pengembangan aplikasi web modern berperforma tinggi (React, 
 - 📜 **Microsoft Office Specialist Certification** - Karirnex by PT Ebiz Karisma Internasional (Agustus 2026).`
   }
 
-  return `Terima kasih atas pertanyaan Anda! Farish Ilham Syahrani (Rishy) adalah Web Developer & Machine Learning Engineer (S1 Teknik Informatika UTM, IPK 3.70).
+  return `Terima kasih atas pertanyaan Anda! Farish Ilham Syahrani (Rishy) adalah Full Stack Developer & Machine Learning Engineer (S1 Teknik Informatika UTM, IPK 3.70).
 
 Apakah Anda ingin mengetahui lebih lanjut tentang:
 - **Proyek-proyek unggulan** (BatikGems, MPStore Web Panel, GraphRAG Search Engine)
@@ -322,7 +322,7 @@ export async function POST(req: NextRequest) {
     console.error("[Chat API Fatal Error]:", error)
     
     // Fallback darurat jika ada parsing error fatal
-    const fallbackText = "Halo! Saya asisten AI untuk Farish Ilham Syahrani (Rishy). Ada yang bisa saya bantu seputar proyek atau portofolio Rishy?"
+    const fallbackText = "Halo! Saya asisten AI untuk Farish Ilham Syahrani (Rishy). Ada yang bisa saya bantu seputar proyek atau portfolio Rishy?"
     const encoder = new TextEncoder()
     const readable = new ReadableStream({
       async start(controller) {

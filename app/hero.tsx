@@ -9,7 +9,7 @@ export default function Hero() {
   const [subIndex, setSubIndex] = useState(0)
   const [deleting, setDeleting] = useState(false)
 
-  const texts = useMemo(() => ["Web Developer", "Backend Developer", "Machine Learning Engineer"], [])
+  const texts = useMemo(() => ["Full Stack Developer", "Backend Developer", "Machine Learning Engineer"], [])
 
   const handleScroll = (id: string) => {
     const section = document.getElementById(id)
