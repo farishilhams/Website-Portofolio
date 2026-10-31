@@ -92,7 +92,7 @@ export default function Project() {
                     <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
                       {project.category}
                     </span>
-                    <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-text-primary group-hover:to-text-secondary transition-all duration-500">
+                    <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-text-secondary transition-colors duration-300">
                       {project.title}
                     </h4>
                   </div>
@@ -152,7 +152,7 @@ export default function Project() {
                         <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
                           {project.category}
                         </span>
-                        <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-text-primary group-hover:to-text-secondary transition-all duration-500">
+                        <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-text-secondary transition-colors duration-300">
                           {project.title}
                         </h4>
                       </div>
@@ -203,7 +203,7 @@ export default function Project() {
                         <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
                           {project.category}
                         </span>
-                        <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-text-primary group-hover:to-text-secondary transition-all duration-500">
+                        <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-text-secondary transition-colors duration-300">
                           {project.title}
                         </h4>
                       </div>
