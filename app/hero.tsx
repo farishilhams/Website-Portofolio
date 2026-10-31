@@ -161,23 +161,37 @@ const quickStatsList = [
   {
     message: "Informatics Engineering Graduate",
     icon: (
-      <svg className="w-5 md:w-6 text-text-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4 10 8-4 8 4-8 4-8-4Zm0 0v5c0 2 3.582 3.5 8 3.5s8-1.5 8-3.5v-5m-1 2v4" />
+      <svg className="w-5 h-5 md:w-6 md:h-6 text-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+        <path d="M22 10v6" />
+        <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
       </svg>
     ),
   },
   {
     message: "Web & ML Enthusiast",
     icon: (
-      <svg className="w-5 md:w-6 text-text-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3c-1.5 0-2.8.8-3.5 2A4.5 4.5 0 0 0 4 9.5c0 1 .3 2 .9 2.8A4.5 4.5 0 0 0 4 15.5 4.5 4.5 0 0 0 8.5 20c.6 0 1.2-.1 1.7-.4.7 1 1.8 1.4 2.8 1.4s2.1-.5 2.8-1.4c.5.3 1.1.4 1.7.4a4.5 4.5 0 0 0 4.5-4.5c0-1.3-.5-2.4-1.4-3.2.6-.8.9-1.8.9-2.8A4.5 4.5 0 0 0 16.5 5c-.7-1.2-2-2-3.5-2h-1Z" />
+      <svg className="w-5 h-5 md:w-6 md:h-6 text-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+        <path d="M9 13a4.5 4.5 0 0 0 3-4" />
+        <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+        <path d="M3.479 10.521a4 4 0 0 1 .585-.396" />
+        <path d="M6 18a4 4 0 0 1-1.967-.516" />
+        <path d="M12 13h4" />
+        <path d="M12 18h6a2 2 0 0 0 2-2v-1" />
+        <path d="M12 8h8" />
+        <path d="M16 8V5a2 2 0 0 0-2-2" />
+        <circle cx="16" cy="13" r="1" fill="currentColor" />
+        <circle cx="18" cy="3" r="1" fill="currentColor" />
+        <circle cx="20" cy="21" r="1" fill="currentColor" />
+        <circle cx="20" cy="8" r="1" fill="currentColor" />
       </svg>
     ),
   },
   {
     message: "React, Next.js & Python",
     icon: (
-      <svg className="w-5 md:w-6 text-text-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 md:w-6 md:h-6 text-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" />
       </svg>
     ),
