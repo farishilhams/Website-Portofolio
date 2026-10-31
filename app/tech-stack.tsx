@@ -77,10 +77,11 @@ const techCategories = [
   },
   {
     title: "Databases & ORM",
-    description: "Relational database management systems and Graph databases.",
+    description: "Relational database management systems, BaaS/Cloud databases, and Graph databases.",
     technologies: [
       { name: "MySQL", svg: "/icons/mysql.svg" },
       { name: "PostgreSQL", svg: "/icons/postgresql.svg" },
+      { name: "Supabase", svg: "/icons/supabase.svg" },
       { name: "Neo4j", svg: "/icons/neo4j.svg" },
     ],
   },

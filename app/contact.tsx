@@ -131,7 +131,7 @@ Gunakan panduan informasi berikut tentang Rishy (Farish Ilham Syahrani) untuk me
 2. **Tech Stack & Keahlian**:
    - Frontend: React.js, Next.js, Tailwind CSS, TypeScript, HTML5, CSS3, Framer Motion
    - Backend & AI/ML: Python, Node.js, Express.js, Laravel, PyTorch, Scikit-Learn, Deep Learning, NLP
-   - Databases: MySQL, PostgreSQL, Neo4j (Graph Database)
+   - Databases: MySQL, PostgreSQL, Supabase, Neo4j (Graph Database)
    - Tools & Cloud: Git, GitHub, Postman, Vercel
 
 3. **Pengalaman Kerja & Pelatihan**:
