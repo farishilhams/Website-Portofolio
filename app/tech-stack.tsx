@@ -51,7 +51,7 @@ export default function TechStack() {
 const techCategories = [
   {
     title: "Frontend",
-    description: "Frameworks and libraries for building interactive user interfaces.",
+    description: "Framework dan pustaka modern untuk membangun antarmuka pengguna yang interaktif, responsif, dan dinamis.",
     technologies: [
       { name: "React.js", svg: "/icons/react.svg" },
       { name: "Next.js", svg: "/icons/nextjs.svg" },
@@ -64,7 +64,7 @@ const techCategories = [
   },
   {
     title: "Backend & AI/ML",
-    description: "Server-side architectures, APIs, and Machine Learning.",
+    description: "Arsitektur sisi server, perancangan RESTful API berkinerja tinggi, dan integrasi Machine Learning.",
     technologies: [
       {
         name: "Python",
@@ -77,7 +77,7 @@ const techCategories = [
   },
   {
     title: "Databases & ORM",
-    description: "Relational database management systems, BaaS/Cloud databases, and Graph databases.",
+    description: "Sistem manajemen basis data relasional, cloud database BaaS, serta basis data graf untuk pemrosesan data terstruktur.",
     technologies: [
       { name: "MySQL", svg: "/icons/mysql.svg" },
       { name: "PostgreSQL", svg: "/icons/postgresql.svg" },
@@ -87,7 +87,7 @@ const techCategories = [
   },
   {
     title: "Tools & Infrastructure",
-    description: "Development tools, version control, and cloud deployment.",
+    description: "Alat pengembangan, sistem kontrol versi, pengujian API, dan platform penerapan cloud (deployment).",
     technologies: [
       { name: "Git", svg: "/icons/git.svg" },
       { name: "GitHub", svg: "/icons/github.svg" },
