@@ -101,12 +101,13 @@ export default function Project() {
               {projectList.map((project) => {
                 const cardKey = `mobile1-${project.id}`
                 return (
-                  <div key={cardKey} className="w-[85vw] sm:w-[400px] flex-shrink-0">
+                  <div key={cardKey} className="w-[82vw] sm:w-[360px] md:w-[400px] flex-shrink-0 infinite-card-item">
                     <ProjectCard
                       project={project}
                       cardKey={cardKey}
                       isFlashing={flashingCardId === cardKey}
                       onSelect={handleSelectProject}
+                      priority={true}
                     />
                   </div>
                 )
@@ -117,12 +118,13 @@ export default function Project() {
               {projectList.map((project) => {
                 const cardKey = `mobile2-${project.id}`
                 return (
-                  <div key={cardKey} className="w-[85vw] sm:w-[400px] flex-shrink-0">
+                  <div key={cardKey} className="w-[82vw] sm:w-[360px] md:w-[400px] flex-shrink-0 infinite-card-item">
                     <ProjectCard
                       project={project}
                       cardKey={cardKey}
                       isFlashing={flashingCardId === cardKey}
                       onSelect={handleSelectProject}
+                      priority={true}
                     />
                   </div>
                 )

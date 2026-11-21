@@ -180,21 +180,36 @@ html {
   transition: transform 0.3s ease;
 }
 
-/* 🔄 Animasi Infinite Scroll */
+/* 🔄 Animasi Infinite Scroll Bebas Kedip (Flicker-Free 3D Hardware Accelerated) */
 @keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
+  0% {
+    transform: translate3d(0, 0, 0);
   }
 
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 40s linear infinite;
+  display: flex;
   width: max-content;
-  will-change: transform;
+  animation: infinite-scroll 45s linear infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+}
+
+/* Pastikan setiap kartu memiliki layer compositing GPU sendiri tanpa overload tekstur monolitik */
+.infinite-card-item {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 /* Hanya pause saat hover pada perangkat kursor desktop (mouse), cegah sticky hover pada mobile touchscreen */

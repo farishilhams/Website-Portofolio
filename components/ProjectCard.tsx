@@ -34,6 +34,7 @@ export default function ProjectCard({
             src={project.imagePath}
             alt={project.title}
             fill
+            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
             className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
             priority={priority}
           />
