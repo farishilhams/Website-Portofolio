@@ -51,7 +51,7 @@ export default function TechStack() {
 const techCategories = [
   {
     title: "Frontend",
-    description: "Framework dan pustaka modern untuk membangun antarmuka pengguna yang interaktif, responsif, dan dinamis.",
+    description: "Koleksi tools dan framework yang biasa saya gunakan untuk meracik tampilan web yang responsif, interaktif, dan nyaman digunakan.",
     technologies: [
       { name: "React.js", svg: "/icons/react.svg" },
       { name: "Next.js", svg: "/icons/nextjs.svg" },
@@ -64,7 +64,7 @@ const techCategories = [
   },
   {
     title: "Backend & AI/ML",
-    description: "Arsitektur sisi server, perancangan RESTful API berkinerja tinggi, dan integrasi Machine Learning.",
+    description: "Teknologi di balik layar untuk menangani alur logika server, membangun RESTful API yang stabil, serta integrasi model Machine Learning.",
     technologies: [
       {
         name: "Python",
@@ -77,7 +77,7 @@ const techCategories = [
   },
   {
     title: "Databases & ORM",
-    description: "Sistem manajemen basis data relasional, cloud database BaaS, serta basis data graf untuk pemrosesan data terstruktur.",
+    description: "Pilihan database mulai dari SQL relasional, platform cloud BaaS, hingga graph database untuk mengelola data dan relasi yang kompleks.",
     technologies: [
       { name: "MySQL", svg: "/icons/mysql.svg" },
       { name: "PostgreSQL", svg: "/icons/postgresql.svg" },
@@ -87,7 +87,7 @@ const techCategories = [
   },
   {
     title: "Tools & Infrastructure",
-    description: "Alat pengembangan, sistem kontrol versi, pengujian API, dan platform penerapan cloud (deployment).",
+    description: "Perangkat pendukung kerja sehari-hari untuk manajemen versi kode, kolaborasi tim, pengujian API, dan proses deployment ke cloud.",
     technologies: [
       { name: "Git", svg: "/icons/git.svg" },
       { name: "GitHub", svg: "/icons/github.svg" },
