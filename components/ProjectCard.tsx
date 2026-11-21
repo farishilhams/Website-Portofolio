@@ -1,7 +1,6 @@
 "use client"
 import React from "react"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
 import GlareHover from "@/components/GlareHover"
 import type { ProjectItem } from "@/data/projects"
 
@@ -25,29 +24,15 @@ export default function ProjectCard({
     >
       <GlareHover
         isTriggered={isFlashing}
-        className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl relative"
+        className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-[border-color,box-shadow,transform] duration-300 shadow-sm hover:shadow-2xl relative"
       >
-        {/* Shimmer / Flash Effect Layer — Terisolasi 100% hanya pada kartu yang dipilih berdasarkan project.id */}
-        <AnimatePresence>
-          {isFlashing && (
-            <motion.div
-              key={`shimmer-${project.id}`}
-              initial={{ x: "-120%", opacity: 0 }}
-              animate={{ x: "220%", opacity: [0, 0.85, 0] }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute inset-0 pointer-events-none z-30 bg-gradient-to-r from-transparent via-white/50 dark:via-white/25 to-transparent skew-x-[-20deg]"
-            />
-          )}
-        </AnimatePresence>
-
         {/* Thumbnail Preview Banner */}
         <div className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2">
           <Image
             src={project.imagePath}
             alt={project.title}
             fill
-            className="object-contain p-2 transition-all duration-700 group-hover:scale-105"
+            className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
             priority={priority}
           />
 
@@ -120,4 +105,3 @@ export default function ProjectCard({
     </div>
   )
 }
-

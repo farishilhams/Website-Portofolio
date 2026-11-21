@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useCallback } from "react"
 
 interface GlareHoverProps {
   width?: string
@@ -22,15 +22,16 @@ interface GlareHoverProps {
 const GlareHover: React.FC<GlareHoverProps> = ({
   children,
   glareColor = "#ffffff",
-  glareOpacity = 0.5,
+  glareOpacity = 0.45,
   glareAngle = -45,
-  glareSize = 250,
   transitionDuration = 650,
-  playOnce = false,
   className = "",
   style = {},
   isTriggered = false,
 }) => {
+  const [isActive, setIsActive] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+
   const hex = glareColor.replace("#", "")
   let rgba = glareColor
   if (/^[\dA-Fa-f]{6}$/.test(hex)) {
@@ -45,65 +46,59 @@ const GlareHover: React.FC<GlareHoverProps> = ({
     rgba = `rgba(${r}, ${g}, ${b}, ${glareOpacity})`
   }
 
-  const overlayRef = useRef<HTMLDivElement | null>(null)
+  const triggerSweep = useCallback(() => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    setIsActive(true)
+    timerRef.current = setTimeout(() => {
+      setIsActive(false)
+    }, transitionDuration)
+  }, [transitionDuration])
 
-  const animateIn = () => {
-    const el = overlayRef.current
-    if (!el) return
-
-    el.style.transition = "none"
-    el.style.backgroundPosition = "-100% -100%, 0 0"
-    el.style.transition = `${transitionDuration}ms ease`
-    el.style.backgroundPosition = "100% 100%, 0 0"
-  }
-
-  const animateOut = () => {
-    const el = overlayRef.current
-    if (!el) return
-
-    if (playOnce) {
-      el.style.transition = "none"
-      el.style.backgroundPosition = "-100% -100%, 0 0"
-    } else {
-      el.style.transition = `${transitionDuration}ms ease`
-      el.style.backgroundPosition = "-100% -100%, 0 0"
-    }
-  }
-
-  // Programmatic shimmer trigger isolated strictly for this instance
+  // Efek kilatan programmatic HANYA aktif jika isTriggered bernilai true untuk instance kartu ini
   useEffect(() => {
     if (isTriggered) {
-      animateIn()
-      const timer = setTimeout(() => {
-        animateOut()
-      }, transitionDuration)
-      return () => clearTimeout(timer)
+      triggerSweep()
     }
-  }, [isTriggered, transitionDuration])
+  }, [isTriggered, triggerSweep])
 
-  const overlayStyle: React.CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    background: `linear-gradient(${glareAngle}deg,
-        hsla(0,0%,0%,0) 60%,
-        ${rgba} 70%,
-        hsla(0,0%,0%,0) 100%)`,
-    backgroundSize: `${glareSize}% ${glareSize}%, 100% 100%`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "-100% -100%, 0 0",
-    pointerEvents: "none",
-  }
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [])
 
   return (
     <div
       className={`relative overflow-hidden ${className}`}
-      style={{
-        ...style,
-      }}
-      onMouseEnter={animateIn}
-      onMouseLeave={animateOut}
+      style={style}
+      onMouseEnter={triggerSweep}
     >
-      <div ref={overlayRef} style={overlayStyle} />
+      {/* Glare Light Sweep Overlay - 100% terisolasi per instance tanpa bentrok DOM style diffing */}
+      <div
+        className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-xl"
+        style={{
+          opacity: isActive ? 1 : 0,
+          transition: isActive ? "none" : `opacity ${transitionDuration}ms ease-out`,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            width: "250%",
+            height: "250%",
+            top: "-75%",
+            left: "-75%",
+            background: `linear-gradient(${glareAngle}deg, hsla(0,0%,0%,0) 45%, ${rgba} 50%, hsla(0,0%,0%,0) 55%)`,
+            transform: isActive
+              ? "translateX(100%) translateY(100%)"
+              : "translateX(-100%) translateY(-100%)",
+            transition: isActive
+              ? `transform ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
+              : "none",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
       {children}
     </div>
   )
