@@ -6,20 +6,22 @@ import type { ProjectItem } from "@/data/projects"
 
 interface ProjectCardProps {
   project: ProjectItem
+  cardKey?: string
   isFlashing: boolean
-  onSelect: (project: ProjectItem) => void
+  onSelect: (project: ProjectItem, cardKey?: string) => void
   priority?: boolean
 }
 
 export default function ProjectCard({
   project,
+  cardKey,
   isFlashing,
   onSelect,
   priority = false,
 }: ProjectCardProps) {
   return (
     <div
-      onClick={() => onSelect(project)}
+      onClick={() => onSelect(project, cardKey)}
       className="relative h-full flex flex-col cursor-pointer"
     >
       <GlareHover
@@ -80,7 +82,7 @@ export default function ProjectCard({
               className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn"
               onClick={(e) => {
                 e.stopPropagation()
-                onSelect(project)
+                onSelect(project, cardKey)
               }}
             >
               Lihat Detail

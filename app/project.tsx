@@ -16,19 +16,21 @@ export default function Project() {
   const [flashingCardId, setFlashingCardId] = useState<string | null>(null)
   const mobileSliderRef = useRef<HTMLDivElement>(null)
 
-  // Handler seleksi project: mengisolasi kilatan HANYA pada kartu yang diklik
-  const handleSelectProject = (project: ProjectItem) => {
-    // 1. Kunci ID kartu unik untuk efek kilatan eksklusif pada kartu tersebut
+  // Handler seleksi project: mengisolasi kilatan HANYA pada kartu yang diklik/disentuh
+  const handleSelectProject = (project: ProjectItem, cardKey?: string) => {
+    // 1. Kunci ID instance kartu unik untuk efek kilatan eksklusif pada kartu tersebut (desktop maupun mobile)
     setActiveProjectId(project.id)
-    setFlashingCardId(project.id)
+    setFlashingCardId(cardKey || project.id)
 
-    // 2. Buka modal detail project
-    setIsOpen(project.index)
+    // 2. Berikan jeda mikro (180ms) agar kilatan cahaya terlihat jelas di layar sentuh mobile sebelum modal terbuka
+    setTimeout(() => {
+      setIsOpen(project.index)
+    }, 180)
 
     // 3. Reset efek kilatan setelah durasi animasi berakhir
     setTimeout(() => {
       setFlashingCardId(null)
-    }, 700)
+    }, 850)
   }
 
   // Touch event handlers untuk mobile touch agar tidak freeze setelah disentuh
@@ -70,16 +72,20 @@ export default function Project() {
 
         {/* Desktop View: Grid */}
         <div className="hidden lg:grid max-w-7xl mx-auto grid-cols-3 gap-8 px-6 md:px-12">
-          {projectList.map((project, index) => (
-            <FadeUp key={`desktop-${project.id}`}>
-              <ProjectCard
-                project={project}
-                isFlashing={flashingCardId === project.id}
-                onSelect={handleSelectProject}
-                priority={index === 0}
-              />
-            </FadeUp>
-          ))}
+          {projectList.map((project, index) => {
+            const cardKey = `desktop-${project.id}`
+            return (
+              <FadeUp key={cardKey}>
+                <ProjectCard
+                  project={project}
+                  cardKey={cardKey}
+                  isFlashing={flashingCardId === cardKey}
+                  onSelect={handleSelectProject}
+                  priority={index === 0}
+                />
+              </FadeUp>
+            )
+          })}
         </div>
 
         {/* Mobile & Tablet View: Infinite Loop Slider with Touch Pan */}
@@ -92,27 +98,35 @@ export default function Project() {
             onTouchCancel={handleTouchEnd}
           >
             <div className="flex gap-6 px-3">
-              {projectList.map((project) => (
-                <div key={`mobile1-${project.id}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
-                  <ProjectCard
-                    project={project}
-                    isFlashing={flashingCardId === project.id}
-                    onSelect={handleSelectProject}
-                  />
-                </div>
-              ))}
+              {projectList.map((project) => {
+                const cardKey = `mobile1-${project.id}`
+                return (
+                  <div key={cardKey} className="w-[85vw] sm:w-[400px] flex-shrink-0">
+                    <ProjectCard
+                      project={project}
+                      cardKey={cardKey}
+                      isFlashing={flashingCardId === cardKey}
+                      onSelect={handleSelectProject}
+                    />
+                  </div>
+                )
+              })}
             </div>
 
             <div className="flex gap-6 px-3">
-              {projectList.map((project) => (
-                <div key={`mobile2-${project.id}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
-                  <ProjectCard
-                    project={project}
-                    isFlashing={flashingCardId === project.id}
-                    onSelect={handleSelectProject}
-                  />
-                </div>
-              ))}
+              {projectList.map((project) => {
+                const cardKey = `mobile2-${project.id}`
+                return (
+                  <div key={cardKey} className="w-[85vw] sm:w-[400px] flex-shrink-0">
+                    <ProjectCard
+                      project={project}
+                      cardKey={cardKey}
+                      isFlashing={flashingCardId === cardKey}
+                      onSelect={handleSelectProject}
+                    />
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

@@ -69,11 +69,15 @@ const GlareHover: React.FC<GlareHoverProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden ${className}`}
-      style={style}
+      className={`relative overflow-hidden select-none ${className}`}
+      style={{
+        WebkitTapHighlightColor: "transparent",
+        ...style,
+      }}
       onMouseEnter={triggerSweep}
+      onTouchStart={triggerSweep}
     >
-      {/* Glare Light Sweep Overlay - 100% terisolasi per instance tanpa bentrok DOM style diffing */}
+      {/* Glare Light Sweep Overlay - 100% terisolasi per instance dan aktif di desktop maupun mobile touch */}
       <div
         className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-xl"
         style={{
