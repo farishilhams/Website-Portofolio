@@ -16,6 +16,7 @@ interface ProjectItem {
   title: string
   category: string
   shortDescription: string
+  description: string
   createdAt: string
   features: string[]
   tech: string[]
@@ -70,7 +71,10 @@ export default function Project() {
           {projectList.map((project, index) => (
             <FadeUp key={`desktop-${index}`}>
               <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl">
-                <div className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2">
+                <div
+                  className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2 cursor-pointer"
+                  onClick={() => setIsOpen(project.index)}
+                >
                   <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
 
                   {/* Tech Stack Overlay */}
@@ -88,7 +92,7 @@ export default function Project() {
                   {/* Numbering */}
                   <div className="absolute top-0 right-6 -translate-y-1/2 bg-background border border-text-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-text-secondary shadow-sm">{String(project.index + 1).padStart(2, "0")}</div>
 
-                  <div className="flex flex-col mb-4">
+                  <div className="flex flex-col mb-4 cursor-pointer" onClick={() => setIsOpen(project.index)}>
                     <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
                       {project.category}
                     </span>
@@ -101,7 +105,7 @@ export default function Project() {
 
                   <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
                     <button className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn" onClick={() => setIsOpen(project.index)}>
-                      View Details
+                      Lihat Detail
                       <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
                     </button>
 
@@ -130,7 +134,10 @@ export default function Project() {
               {projectList.map((project, index) => (
                 <div key={`mobile1-${index}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
                   <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl">
-                    <div className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2">
+                    <div
+                      className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2 cursor-pointer"
+                      onClick={() => setIsOpen(project.index)}
+                    >
                       <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
 
                       {/* Tech Stack Overlay */}
@@ -148,7 +155,7 @@ export default function Project() {
                       {/* Numbering */}
                       <div className="absolute top-0 right-6 -translate-y-1/2 bg-background border border-text-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-text-secondary shadow-sm">{String(project.index + 1).padStart(2, "0")}</div>
 
-                      <div className="flex flex-col mb-4">
+                      <div className="flex flex-col mb-4 cursor-pointer" onClick={() => setIsOpen(project.index)}>
                         <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
                           {project.category}
                         </span>
@@ -161,7 +168,7 @@ export default function Project() {
 
                       <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
                         <button className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn" onClick={() => setIsOpen(project.index)}>
-                          View Details
+                          Lihat Detail
                           <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
                         </button>
 
@@ -181,7 +188,10 @@ export default function Project() {
               {projectList.map((project, index) => (
                 <div key={`mobile2-${index}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
                   <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl">
-                    <div className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2">
+                    <div
+                      className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2 cursor-pointer"
+                      onClick={() => setIsOpen(project.index)}
+                    >
                       <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
 
                       {/* Tech Stack Overlay */}
@@ -199,7 +209,7 @@ export default function Project() {
                       {/* Numbering */}
                       <div className="absolute top-0 right-6 -translate-y-1/2 bg-background border border-text-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-text-secondary shadow-sm">{String(project.index + 1).padStart(2, "0")}</div>
 
-                      <div className="flex flex-col mb-4">
+                      <div className="flex flex-col mb-4 cursor-pointer" onClick={() => setIsOpen(project.index)}>
                         <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
                           {project.category}
                         </span>
@@ -212,7 +222,7 @@ export default function Project() {
 
                       <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
                         <button className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn" onClick={() => setIsOpen(project.index)}>
-                          View Details
+                          Lihat Detail
                           <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
                         </button>
 
@@ -233,7 +243,7 @@ export default function Project() {
         <FadeUp>
           <div className="mt-16 flex justify-center w-full px-6">
             <a href="https://github.com/farishilhams" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-background border border-text-secondary/20 text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-background rounded-xl font-bold tracking-widest text-sm uppercase transition-all duration-300 ease-out group hover:-translate-y-1.5 hover:scale-[1.02] shadow-sm hover:shadow-xl">
-              <span>View More Project</span>
+              <span>Lihat Proyek Lainnya</span>
               <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -271,13 +281,23 @@ export default function Project() {
                     <Image src={activeProject.imagePath} alt={activeProject.title} fill className="object-contain p-2" priority />
                   </div>
 
+                  {/* Penjelasan Proyek Lengkap */}
+                  <div className="mb-8 bg-thirdary/30 p-5 rounded-2xl border border-text-secondary/10">
+                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2.5">
+                      Penjelasan Proyek
+                    </span>
+                    <p className="text-sm sm:text-base text-text-primary leading-relaxed font-medium">
+                      {activeProject.description || activeProject.shortDescription}
+                    </p>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 pb-8 border-b border-text-secondary/10">
                     <div>
-                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Created</span>
+                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Waktu Pembuatan</span>
                       <span className="text-sm font-bold bg-thirdary text-text-primary px-3 py-1.5 rounded-lg border border-text-secondary/10">{activeProject.createdAt}</span>
                     </div>
                     <div>
-                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Technologies</span>
+                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Teknologi</span>
                       <div className="flex flex-wrap gap-2">
                         {activeProject.tech.map((tech, i) => (
                           <span key={i} className="text-xs font-bold bg-thirdary text-text-primary px-3 py-1.5 rounded-lg border border-text-secondary/10 uppercase tracking-wider">
@@ -289,7 +309,7 @@ export default function Project() {
                   </div>
 
                   <div>
-                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-5">Key Features</span>
+                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-5">Fitur Utama</span>
                     <ul className="space-y-4">
                       {activeProject.features.map((feature, i) => (
                         <li key={i} className="flex items-center bg-thirdary/50 p-4 rounded-xl border border-text-secondary/5">
@@ -304,18 +324,18 @@ export default function Project() {
                 {/* Modal Footer */}
                 <div className="p-6 border-t border-text-secondary/10 flex flex-col sm:flex-row gap-4 bg-background">
                   <a href={activeProject.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 text-center font-bold text-sm tracking-widest uppercase bg-text-primary text-background py-4 rounded-xl hover:-translate-y-1 transition-transform duration-300">
-                    Live Demo
+                    Kunjungi Website
                   </a>
                   {activeProject.isPrivateRepo ? (
                     <button disabled className="flex-1 flex justify-center items-center gap-2 text-center font-bold text-sm tracking-widest uppercase border-2 border-text-secondary/20 text-text-secondary opacity-50 cursor-not-allowed py-4 rounded-xl">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
-                      Source Code
+                      Private Repository
                     </button>
                   ) : (
                     <a href={activeProject.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 text-center font-bold text-sm tracking-widest uppercase border-2 border-text-secondary/20 text-text-primary hover:border-text-primary hover:-translate-y-1 transition-all duration-300 py-4 rounded-xl">
-                      Source Code
+                      Lihat Source Code
                     </a>
                   )}
                 </div>
@@ -333,14 +353,15 @@ const projectList: ProjectItem[] = [
     index: 0,
     imagePath: batikGemsImg,
     title: "BatikGems E-Commerce",
-    category: "Web Application & E-Commerce",
-    shortDescription: "Developed a full-featured batik fashion e-commerce platform integrating RajaOngkir API for dynamic real-time shipping calculations and a robust multi-variant size and inventory management system.",
-    createdAt: "2024-06-15",
+    category: "Aplikasi Web & E-Commerce",
+    shortDescription: "Platform e-commerce busana batik dengan integrasi RajaOngkir API untuk kalkulasi ongkir real-time otomatis, manajemen transaksi menyeluruh, serta sistem pengelolaan stok multi-varian ukuran berbasis PHP dan MySQL.",
+    description: "BatikGems merupakan platform web e-commerce busana batik nusantara yang dirancang untuk memberikan pengalaman berbelanja daring yang cepat dan mudah. Aplikasi ini mengintegrasikan RajaOngkir API untuk menghitung tarif ongkos kirim ekspedisi secara real-time dan akurat ke seluruh wilayah Indonesia. Dilengkapi sistem manajemen inventaris multi-varian ukuran (S, M, L, XL), alur transaksi pemesanan terstruktur, serta dashboard admin komprehensif untuk memantau pesanan masuk, penjualan, dan stok barang secara terorganisir.",
+    createdAt: "Juni 2024",
     features: [
-      "RajaOngkir Real-Time Shipping API",
-      "Multi-Variant Size & Stock Management",
-      "Comprehensive Order & Transaction Flow",
-      "Admin Inventory & Sales Dashboard",
+      "Integrasi RajaOngkir API untuk Tarif Ongkir Real-Time Otomatis",
+      "Sistem Manajemen Stok & Multi-Varian Ukuran Produk",
+      "Alur Transaksi & Konfirmasi Pemesanan Terintegrasi",
+      "Dashboard Admin Pengelolaan Inventaris & Laporan Penjualan",
     ],
     tech: ["PHP", "MySQL", "RajaOngkir API", "JavaScript", "Bootstrap", "REST API"],
     githubUrl: "https://github.com/farishilhams/E-Commerce-Batik",
@@ -351,14 +372,15 @@ const projectList: ProjectItem[] = [
     index: 1,
     imagePath: mpstorePanelImg,
     title: "MPStore Web Panel",
-    category: "Enterprise Web Platform",
-    shortDescription: "Architected a comprehensive digital ecosystem management panel featuring a 5-tier Role-Based Access Control (RBAC) system powered by high-performance Express.js REST APIs and Supabase PostgreSQL.",
-    createdAt: "2025-08-20",
+    category: "Platform Web Enterprise",
+    shortDescription: "Web panel manajemen sistem internal ekosistem digital MPStore dengan proteksi keamanan 5 tingkat Role-Based Access Control (RBAC), arsitektur RESTful API berkinerja tinggi, dan integrasi Supabase PostgreSQL.",
+    description: "MPStore Web Panel adalah sistem dashboard operasional internal enterprise yang dirancang khusus untuk memonitor dan mengelola ekosistem digital MPStore SuperApps. Aplikasi ini mengimplementasikan sistem keamanan Role-Based Access Control (RBAC) dengan 5 tingkatan hak akses pengguna guna menjamin integritas dan kerahasiaan data internal perusahaan. Dibangun dengan RESTful API Express.js berkecepatan tinggi, database Supabase PostgreSQL yang andal, serta antarmuka modern berbasis React 19 + Vite yang responsif, dinamis, dan teroptimasi.",
+    createdAt: "Agustus 2025",
     features: [
-      "5-Tier Role-Based Access Control (RBAC)",
-      "High-Performance RESTful API Architecture",
-      "Supabase Cloud Database Integration",
-      "Real-Time Ecosystem Analytics & User Management",
+      "Proteksi Keamanan 5 Tingkat Hak Akses Pengguna (RBAC)",
+      "Arsitektur RESTful API Berkinerja Tinggi & Teruji Postman",
+      "Integrasi Cloud Database Supabase PostgreSQL Skalabel",
+      "Manajemen User, Hak Akses, & Monitoring Ekosistem Real-Time",
     ],
     tech: ["React 19", "Vite", "Express.js", "TypeScript", "Supabase", "Tailwind CSS"],
     githubUrl: "https://github.com/farishilhams/Website-Panel",
@@ -369,14 +391,15 @@ const projectList: ProjectItem[] = [
     index: 2,
     imagePath: graphragSearchImg,
     title: "GraphRAG Search Engine",
-    category: "AI / Machine Learning & Search Platform",
-    shortDescription: "Engineered an intelligent academic search engine leveraging Graph Retrieval-Augmented Generation (GraphRAG) and Knowledge Graphs to explore and semantically analyze Informatics Engineering thesis documents.",
-    createdAt: "2026-02-10",
+    category: "Platform AI / Machine Learning & Pencarian",
+    shortDescription: "Mesin pencari cerdas berbasis Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs untuk eksplorasi dan temu balik informasi dokumen skripsi Teknik Informatika UTM secara semantik.",
+    description: "GraphRAG Search Engine adalah platform pencarian cerdas berbasis kecerdasan buatan (AI) yang menggabungkan metode Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs untuk eksplorasi serta analisis semantik dokumen skripsi Teknik Informatika Universitas Trunojoyo Madura. Sistem ini mampu menghubungkan entitas topik riset, metodologi, dan pengarang dalam basis data grafis Neo4j, memungkinkan temu balik informasi kontekstual yang jauh lebih cerdas, akurat, dan komprehensif dibandingkan mesin pencari berbasis kata kunci tradisional.",
+    createdAt: "Februari 2026",
     features: [
-      "Graph Retrieval-Augmented Generation (GraphRAG) Pipeline",
-      "Knowledge Graph-Powered Entity Relationship Mapping",
-      "Context-Aware Semantic Thesis Document Querying",
-      "Interactive Streamlit Search & Analytics Interface",
+      "Pipeline Temu Balik Informasi Graph Retrieval-Augmented Generation (GraphRAG)",
+      "Pemetaan Entitas & Relasi Riset Menggunakan Neo4j Knowledge Graphs",
+      "Pencarian Semantik Kontekstual Berbasis Natural Language Processing (NLP)",
+      "Antarmuka Analitik & Visualisasi Grafis Interaktif Berbasis Streamlit",
     ],
     tech: ["Python", "Streamlit", "GraphRAG", "Knowledge Graphs", "Neo4j", "LLM / NLP"],
     githubUrl: "https://github.com/farishilhams/GraphRAG-Search-Engine",

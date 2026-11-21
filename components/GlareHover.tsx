@@ -1,4 +1,5 @@
-import React, { useRef } from "react"
+"use client"
+import React, { useState, useRef, useEffect } from "react"
 
 interface GlareHoverProps {
   width?: string
@@ -17,7 +18,18 @@ interface GlareHoverProps {
   style?: React.CSSProperties
 }
 
-const GlareHover: React.FC<GlareHoverProps> = ({ children, glareColor = "#ffffff", glareOpacity = 0.5, glareAngle = -45, glareSize = 250, transitionDuration = 650, playOnce = false, className = "", style = {} }) => {
+const GlareHover: React.FC<GlareHoverProps> = ({
+  children,
+  glareColor = "#ffffff",
+  glareOpacity = 0.35,
+  glareAngle = -45,
+  transitionDuration = 650,
+  className = "",
+  style = {},
+}) => {
+  const [isGlaring, setIsGlaring] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+
   const hex = glareColor.replace("#", "")
   let rgba = glareColor
   if (/^[\dA-Fa-f]{6}$/.test(hex)) {
@@ -32,54 +44,50 @@ const GlareHover: React.FC<GlareHoverProps> = ({ children, glareColor = "#ffffff
     rgba = `rgba(${r}, ${g}, ${b}, ${glareOpacity})`
   }
 
-  const overlayRef = useRef<HTMLDivElement | null>(null)
-
-  const animateIn = () => {
-    const el = overlayRef.current
-    if (!el) return
-
-    el.style.transition = "none"
-    el.style.backgroundPosition = "-100% -100%, 0 0"
-    el.style.transition = `${transitionDuration}ms ease`
-    el.style.backgroundPosition = "100% 100%, 0 0"
+  // Efek kilatan cahaya hanya berjalan khusus pada kartu yang disentuh/diklik/dikunjungi
+  const triggerGlare = () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+    setIsGlaring(true)
+    timerRef.current = setTimeout(() => {
+      setIsGlaring(false)
+    }, transitionDuration)
   }
 
-  const animateOut = () => {
-    const el = overlayRef.current
-    if (!el) return
-
-    if (playOnce) {
-      el.style.transition = "none"
-      el.style.backgroundPosition = "-100% -100%, 0 0"
-    } else {
-      el.style.transition = `${transitionDuration}ms ease`
-      el.style.backgroundPosition = "-100% -100%, 0 0"
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
     }
-  }
-
-  const overlayStyle: React.CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    background: `linear-gradient(${glareAngle}deg,
-        hsla(0,0%,0%,0) 60%,
-        ${rgba} 70%,
-        hsla(0,0%,0%,0) 100%)`,
-    backgroundSize: `${glareSize}% ${glareSize}%, 100% 100%`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "-100% -100%, 0 0",
-    pointerEvents: "none",
-  }
+  }, [])
 
   return (
     <div
       className={`relative overflow-hidden ${className}`}
-      style={{
-        ...style,
-      }}
-      onMouseEnter={animateIn}
-      onMouseLeave={animateOut}
+      style={style}
+      onMouseEnter={triggerGlare}
+      onClick={triggerGlare}
     >
-      <div ref={overlayRef} style={overlayStyle} />
+      {/* Glare Light Sweep Overlay - terisolasi penuh khusus untuk kartu ini sehingga kartu lain tidak ikut berkedip/berkilat */}
+      <div
+        className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-xl"
+        style={{
+          opacity: isGlaring ? 1 : 0,
+          transition: isGlaring ? "none" : `opacity ${transitionDuration}ms ease-out`,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            width: "250%",
+            height: "250%",
+            top: "-75%",
+            left: "-75%",
+            background: `linear-gradient(${glareAngle}deg, hsla(0,0%,0%,0) 45%, ${rgba} 50%, hsla(0,0%,0%,0) 55%)`,
+            transform: isGlaring ? "translateX(100%) translateY(100%)" : "translateX(-100%) translateY(-100%)",
+            transition: isGlaring ? `transform ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)` : "none",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
       {children}
     </div>
   )
