@@ -45,19 +45,27 @@ export default function Header() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section")
+    let ticking = false
+
     const handleScroll = () => {
-      let current: string | null = ""
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.clientHeight
-        if (window.scrollY >= sectionTop - sectionHeight / 3) {
-          current = section.getAttribute("id")
-        }
-      })
-      setActiveSection(current)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          let current: string | null = ""
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop
+            const sectionHeight = section.clientHeight
+            if (window.scrollY >= sectionTop - sectionHeight / 3) {
+              current = section.getAttribute("id")
+            }
+          })
+          setActiveSection(current)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 

@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import FadeDown from "@/components/animations/FadeDown"
 
 interface ExperienceImage {
@@ -59,19 +59,6 @@ export default function Experience() {
     }
   }, [selectedImage])
 
-  // Track scroll position of the entire section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  })
-
-  // Add a slight spring physics to the line growth for smoothness
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-
   return (
     <>
       <section id="experience" className="w-full max-w-7xl mx-auto py-24 md:py-32 cursor-default bg-background relative border-t border-text-secondary/10" ref={containerRef}>
@@ -85,7 +72,14 @@ export default function Experience() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative group/list flex flex-col">
           {experiences.map((exp, index) => {
             return (
-              <motion.div key={exp.id} initial={{ opacity: 0, y: 40, filter: "blur(5px)" }} whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: index * 0.1 }} className="group/item relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 p-6 md:p-8 -mx-6 md:-mx-8 rounded-2xl transition-all duration-500 hover:!opacity-100 hover:!blur-none group-hover/list:opacity-40 group-hover/list:blur-[2px] hover:bg-text-secondary/5 hover:shadow-lg border border-transparent hover:border-text-secondary/10">
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group/item relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 p-6 md:p-8 -mx-6 md:-mx-8 rounded-2xl transition-[border-color,background-color,box-shadow,opacity] duration-300 md:group-hover/list:opacity-40 md:group-hover/list:blur-[1px] md:hover:!opacity-100 md:hover:!blur-none hover:bg-text-secondary/5 hover:shadow-lg border border-transparent hover:border-text-secondary/10"
+              >
 
                 {/* Left Column: Date */}
                 <div className="md:col-span-1 pt-1 md:pt-2">

@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer"
 import { motion } from "framer-motion"
 
 export default function FadeLeft({ children, delay = 0, duration = 0.8 }: { children: React.ReactNode, delay?: number, duration?: number }) {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 })
 
   return (
     <motion.div 
