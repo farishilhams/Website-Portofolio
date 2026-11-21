@@ -2,9 +2,9 @@ import { type StaticImageData } from "next/image"
 import batikGemsImg from "@/public/images/projects/ecommerce-batik.png"
 import mpstorePanelImg from "@/public/images/projects/mpstore-panel.png"
 import graphragSearchImg from "@/public/images/projects/graphrag-search.png"
-import travelkitaImg from "@/public/images/projects/travelkita-booking.jpg"
-import naiveBayesImg from "@/public/images/projects/naive-bayes-thesis.jpg"
-import sakuinImg from "@/public/images/projects/sakuin-finance.jpg"
+import travelKitaImg from "@/public/images/projects/travelkita-booking.png"
+import naiveBayesImg from "@/public/images/projects/naive-bayes-thesis.png"
+import sakuinFinanceImg from "@/public/images/projects/sakuin-finance.png"
 
 export interface ProjectItem {
   id: string
@@ -106,53 +106,51 @@ export const projectList: ProjectItem[] = [
   {
     id: "travelkita-flight-booking",
     index: 3,
-    imagePath: travelkitaImg,
-    title: "TravelKita Flight Booking",
-    category: "Aplikasi Web & Sistem Reservasi",
+    imagePath: travelKitaImg,
+    title: "TravelKita",
+    category: "Platform Reservasi & E-Ticketing",
     shortDescription:
-      "Platform reservasi tiket penerbangan modern berbasis Next.js 16 App Router dan React 19 yang dilengkapi payment gateway Midtrans Snap, sinkronisasi pemilihan kursi real-time via Supabase WebSocket, live radar FIDS, serta panel admin back-office yang komprehensif.",
+      "Platform reservasi tiket penerbangan komersial modern yang dilengkapi gateway pembayaran Midtrans Snap, sinkronisasi kursi real-time via Supabase WebSocket, radar penerbangan FIDS langsung, dan dashboard admin terpadu.",
     description:
-      "TravelKita adalah platform pemesanan tiket penerbangan komersial modern yang dirancang untuk memberikan pengalaman booking pesawat yang aman, cepat, dan interaktif dengan pelacakan status penerbangan langsung dan pembayaran terpadu.",
+      "TravelKita adalah platform pemesanan tiket pesawat modern berbasis Next.js 16 dan React 19 yang menghadirkan alur reservasi interaktif, integrasi pembayaran digital Midtrans, dan pemantauan status penerbangan real-time.",
     longDescription:
-      "TravelKita dibangun sebagai solusi ekosistem reservasi tiket pesawat terbang komersial yang interaktif dan skalabel. Memanfaatkan teknologi mutakhir Next.js 16 App Router bersama React 19 dan TypeScript, sistem ini menyuguhkan pengalaman pencarian rute penerbangan domestik dan internasional yang mulus. Fitur unggulannya mencakup integrasi gateway pembayaran resmi Midtrans Snap untuk transaksi multi-metode (Virtual Account, E-Wallet, QRIS), pemetaan denah kursi pesawat secara visual dengan sinkronisasi status keterisian real-time melalui Supabase WebSocket, radar Flight Information Display System (FIDS) terpadu, serta dasbor administrator lengkap untuk mengelola jadwal rute, maskapai, dan konfirmasi tiket e-ticket otomatis.",
+      "TravelKita dirancang untuk menyajikan pengalaman pemesanan tiket penerbangan komersial yang cepat, transparan, dan terintegrasi secara menyeluruh. Dibangun dengan Next.js 16 App Router dan React 19, platform ini mengintegrasikan Supabase WebSocket untuk sinkronisasi denah kursi kabin (seat mapping) secara real-time antar-pengguna, gateway pembayaran Midtrans Snap untuk transaksi multichannel yang aman, Flight Information Display System (FIDS) radar langsung, serta panel back-office administrator yang lengkap untuk manajemen maskapai, rute jadwal penerbangan, dan validasi e-ticket otomatis.",
     details:
-      "Arsitektur dibangun di atas Next.js 16 App Router dengan React 19 Server Components & Client Components, TypeScript untuk ketahanan tipe data penuh, Tailwind CSS untuk antarmuka responsif dan modern, Midtrans Snap API untuk pemrosesan transaksi pembayaran terenkripsi, serta Supabase PostgreSQL dengan WebSocket channel untuk sinkronisasi pemesanan kursi secara instan.",
-    createdAt: "November 2025",
+      "Arsitektur frontend memanfaatkan Next.js 16 Server Components dan React 19 untuk performa loading maksimal, TypeScript untuk type-safety di seluruh modul pemesanan, Tailwind CSS untuk visual responsif, Supabase PostgreSQL & Realtime Channel untuk sinkronisasi state kursi pesawat, serta integrasi webhook Midtrans untuk verifikasi status transaksi instan.",
+    createdAt: "Januari 2026",
     features: [
-      "Sistem Pemesanan Tiket Penerbangan Pulang-Pergi & Sekali Jalan",
-      "Integrasi Payment Gateway Midtrans Snap (QRIS, VA, E-Wallet, CC)",
-      "Pemilihan Denah Kursi Real-Time Menggunakan Supabase WebSocket",
-      "Radar FIDS (Flight Information Display System) & Pelacakan Rute Langsung",
-      "Panel Administrator Back-Office untuk Tata Kelola Maskapai & Transaksi",
+      "Pemilihan & Sinkronisasi Kursi Kabin Pesawat Real-Time (Supabase WebSocket)",
+      "Gateway Pembayaran Digital Multichannel Terintegrasi Midtrans Snap",
+      "Radar Jadwal & Flight Information Display System (FIDS) Interaktif",
+      "Panel Back-Office Admin Lengkap untuk Manajemen Maskapai, Rute & E-Ticket",
     ],
-    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Midtrans API", "Supabase WebSocket"],
+    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Midtrans", "Supabase"],
     githubUrl: "https://github.com/farishilhams/TravelKita",
     liveDemoUrl: "https://travel-kita.vercel.app/",
     isPrivateRepo: false,
   },
   {
-    id: "thesis-naive-bayes-classifier",
+    id: "klasifikasi-tugas-akhir-naive-bayes",
     index: 4,
     imagePath: naiveBayesImg,
-    title: "Klasifikasi Abstrak Tugas Akhir",
-    category: "Machine Learning & Pemrosesan Bahasa Alami",
+    title: "Klasifikasi Tugas Akhir Naive Bayes",
+    category: "Machine Learning & NLP",
     shortDescription:
-      "Aplikasi Machine Learning cerdas berbasis Streamlit dan Python untuk klasifikasi teks abstrak tugas akhir mahasiswa Teknik Informatika ke dalam 4 bidang minat menggunakan ekstraksi fitur TF-IDF dan algoritma Multinomial Naive Bayes.",
+      "Aplikasi cerdas klasifikasi teks abstrak tugas akhir menggunakan algoritma Multinomial Naive Bayes dan ekstraksi fitur TF-IDF untuk memetakan bidang peminatan riset Teknik Informatika secara akurat.",
     description:
-      "Sistem otomatisasi analisis teks akademis yang mengklasifikasikan rumpun bidang minat skripsi mahasiswa Teknik Informatika secara cepat, objektif, dan terstandarisasi memanfaatkan pemodelan Natural Language Processing (NLP).",
+      "Sistem otomasi analisis teks berbasis Machine Learning dan Natural Language Processing (NLP) yang mengklasifikasikan abstrak skripsi ke dalam rumpun keilmuan Teknik Informatika secara instan dan objektif.",
     longDescription:
-      "Dikembangkan untuk memecahkan kendala penentuan bidang minat tugas akhir mahasiswa yang kerap memakan waktu verifikasi manual, aplikasi ini mengotomatiskan klasifikasi abstrak skripsi Teknik Informatika ke dalam empat rumpun keilmuan: Kecerdasan Komputasi, Komputasi Bahasa Alami, Sistem Terdistribusi & Jaringan, serta Rekayasa Perangkat Lunak. Menggunakan pipeline Natural Language Processing (NLP) lengkap mulai dari text preprocessing (case folding, tokenizing, stopword removal, stemming Sastrawi), pembobotan kata Term Frequency-Inverse Document Frequency (TF-IDF), hingga pelatihan model Multinomial Naive Bayes yang menghasilkan akurasi prediksi tinggi dengan dasbor pengujian interaktif Streamlit.",
+      "Aplikasi ini dikembangkan untuk mengotomatisasi pengelompokan topik penelitian skripsi dan tugas akhir mahasiswa Teknik Informatika ke dalam berbagai bidang minat keilmuan (Kecerdasan Komputasi, Komputasi Bahasa Alami, Sistem Terdistribusi & Jaringan, serta Teknologi Perangkat Lunak). Mengimplementasikan pipeline pemrosesan teks NLP komprehensif mulai dari case folding, tokenizing, stopword removal, dan stemming kata bahasa Indonesia menggunakan Sastrawi, dilanjutkan dengan ekstraksi pembobotan kata TF-IDF, serta klasifikasi menggunakan Multinomial Naive Bayes dengan evaluasi metrik akurasi tinggi yang disajikan lewat antarmuka Streamlit yang intuitif.",
     details:
-      "Dibangun menggunakan bahasa Python 3, memanfaatkan Scikit-Learn untuk pipeline TF-IDF Vectorizer dan Multinomial Naive Bayes classifier, NLTK & Sastrawi untuk pemrosesan korpus teks bahasa Indonesia, Pandas untuk manajemen dataset abstrak, serta Streamlit untuk penyajian antarmuka web interaktif yang siap pakai dan mudah diuji secara langsung.",
-    createdAt: "Desember 2024",
+      "Dibangun dengan Python sebagai bahasa utama, Scikit-Learn untuk pemodelan Multinomial Naive Bayes dan TfidfVectorizer, Sastrawi & NLTK untuk preprocessing teks bahasa Indonesia, Pandas & NumPy untuk manipulasi korpus dataset, serta Streamlit untuk penyajian antarmuka web pengujian abstrak secara interaktif.",
+    createdAt: "November 2025",
     features: [
-      "Klasifikasi Teks Abstrak Otomatis ke 4 Bidang Minat Teknik Informatika",
-      "Ekstraksi Fitur TF-IDF (Term Frequency-Inverse Document Frequency)",
-      "Model Prediksi Berkinerja Tinggi Berbasis Multinomial Naive Bayes",
-      "Studio Pengujian Abstrak Cepat dengan Contoh Sampel Terintegrasi",
-      "Antarmuka Eksploratif & Visualisasi Distribusi Probabilitas Streamlit",
+      "Ekstraksi Fitur Pembobotan Kata Term Frequency - Inverse Document Frequency (TF-IDF)",
+      "Klasifikasi Cerdas Multi-Kelas Menggunakan Algoritma Multinomial Naive Bayes",
+      "Pipeline Preprocessing Teks Lengkap (Tokenizing, Stopwords, Stemming Sastrawi)",
+      "Studio Pengujian Abstrak Interaktif & Analisis Probabilitas Kelas Prediksi",
     ],
-    tech: ["Python", "Streamlit", "Naive Bayes", "TF-IDF", "NLP", "Scikit-Learn"],
+    tech: ["Python", "Streamlit", "Scikit-Learn", "NLP", "Naive Bayes", "TF-IDF"],
     githubUrl: "https://github.com/farishilhams/Klasifikasi-Tugas-Akhir-Naive-Bayes",
     liveDemoUrl: "https://klasifikasi-tugas-akhir-naive-bayes.streamlit.app/",
     isPrivateRepo: false,
@@ -160,27 +158,26 @@ export const projectList: ProjectItem[] = [
   {
     id: "sakuin-finance-pwa",
     index: 5,
-    imagePath: sakuinImg,
-    title: "SakuIn - Smart Finance PWA",
-    category: "Progressive Web App (PWA) & FinTech",
+    imagePath: sakuinFinanceImg,
+    title: "Sakuin",
+    category: "Progressive Web App & Finansial",
     shortDescription:
-      "Aplikasi pengelolaan keuangan pribadi berbasis Progressive Web App (PWA) dengan integrasi pemindai struk otomatis (OCR Receipt Scanner), visualisasi arus kas bulanan, autentikasi Google OAuth, serta sinkronisasi cloud MongoDB.",
+      "Aplikasi pengelolaan keuangan pribadi berbasis Progressive Web App (PWA) dengan integrasi pemindai struk otomatis OCR Receipt Scanner, manajemen arus kas & anggaran bulanan, serta autentikasi aman Google OAuth.",
     description:
-      "Platform keuangan digital berbasis PWA yang membantu pengguna mencatat pemasukan, mengalokasikan anggaran kategori, dan memindai struk fisik belanjaan secara otomatis untuk monitoring finansial harian yang disiplin.",
+      "Sakuin adalah asisten finansial digital berbasis web dan mobile PWA yang membantu pengguna mencatat pengeluaran, memindai struk belanja secara otomatis, dan mengontrol alokasi anggaran bulanan secara teratur.",
     longDescription:
-      "SakuIn lahir untuk mentransformasikan pencatatan keuangan manual menjadi lebih cerdas dan praktis lewat platform Progressive Web App (PWA) yang dapat diinstal langsung di Android, iOS, maupun desktop. Dibangun menggunakan React, Node.js, Express, dan MongoDB, aplikasi ini memadukan kemudahan login sekali klik via Google OAuth dengan teknologi OCR (Optical Character Recognition) untuk mengekstraksi nilai total belanja dari foto struk kertas secara instan. Dilengkapi analitik alokasi anggaran bulanan per kategori, pemantauan batas pengeluaran (spending limits), manajemen target impian (wishlist), serta mode tampilan gelap dan terang yang nyaman.",
+      "Sakuin (Pengelola Uang Saku) dirancang sebagai solusi finansial modern yang ringan, intuitif, dan dapat diinstal langsung di perangkat smartphone sebagai Progressive Web App (PWA). Aplikasi ini menyederhanakan pencatatan pengeluaran melalui fitur canggih pemindai struk belanja berbasis Optical Character Recognition (OCR) yang mengekstrak item dan total belanjaan otomatis. Dilengkapi sistem perencanaan anggaran per kategori (budgeting), pelacakan target tabungan (wishlist), grafik analitik arus kas interaktif, serta sistem keamanan login terintegrasi Google OAuth dan basis data cloud MongoDB.",
     details:
-      "Menggabungkan React.js dan Tailwind CSS di sisi frontend dengan Service Workers untuk kapabilitas offline PWA, Node.js dan Express.js untuk RESTful API backend, MongoDB Atlas untuk penyimpanan basis data NoSQL dokumen fleksibel, Tesseract.js / Cloud OCR untuk ekstraksi teks struk belanja otomatis, dan Firebase / Google OAuth untuk otentikasi pengguna yang aman.",
-    createdAt: "Maret 2025",
+      "Frontend dibangun menggunakan React, Vite, dan Tailwind CSS dengan konfigurasi PWA (Service Worker & Web App Manifest), backend didukung oleh Node.js, Express.js, dan database MongoDB Atlas untuk penyimpanan transaksi terstruktur, Tesseract OCR API untuk pemindaian teks struk belanja, serta Google OAuth 2.0 untuk otentikasi akun pengguna yang aman.",
+    createdAt: "Desember 2025",
     features: [
-      "PWA (Progressive Web App) dengan Dukungan Install di Mobile & Desktop",
-      "Fitur Pindai Struk Otomatis Berbasis OCR (Optical Character Recognition)",
-      "Manajemen Arus Kas Harian, Alokasi Budget Kategori, & Target Wishlist",
-      "Sistem Keamanan Akun Terintegrasi Google OAuth & Cloud MongoDB",
-      "Dasbor Analitik Finansial Interaktif dengan Dukungan Dark & Light Mode",
+      "Pemindai Struk Belanja Otomatis Berbasis Optical Character Recognition (OCR)",
+      "Manajemen Arus Kas Masuk & Keluar Lengkap dengan Alokasi Budget per Kategori",
+      "Dukungan Progressive Web App (PWA) yang Responsif dan Dapat Diinstal di Ponsel",
+      "Autentikasi Aman Google OAuth 2.0 & Sinkronisasi Cloud Database MongoDB",
     ],
-    tech: ["React", "Node.js", "Express.js", "MongoDB", "PWA", "OCR API"],
-    githubUrl: "https://github.com/farishilhams/SakuIn-PWA",
+    tech: ["React.js", "PWA", "Node.js", "MongoDB", "OCR / Tesseract", "Tailwind CSS"],
+    githubUrl: "https://github.com/farishilhams/Sakuin",
     liveDemoUrl: "https://sakuinfree.vercel.app/",
     isPrivateRepo: false,
   },

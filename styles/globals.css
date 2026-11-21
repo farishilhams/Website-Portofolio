@@ -192,7 +192,7 @@ html {
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 25s linear infinite;
+  animation: infinite-scroll 40s linear infinite;
   width: max-content;
   will-change: transform;
 }
