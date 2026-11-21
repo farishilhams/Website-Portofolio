@@ -1,33 +1,35 @@
 "use client"
-import Image, { type StaticImageData } from "next/image"
+import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import FadeDown from "@/components/animations/FadeDown"
 import FadeUp from "@/components/animations/FadeUp"
-import GlareHover from "@/components/GlareHover"
+import ProjectCard from "@/components/ProjectCard"
+import { projectList, type ProjectItem } from "@/data/projects"
 
-import batikGemsImg from "@/public/images/projects/ecommerce-batik.png"
-import mpstorePanelImg from "@/public/images/projects/mpstore-panel.png"
-import graphragSearchImg from "@/public/images/projects/graphrag-search.png"
-
-interface ProjectItem {
-  index: number
-  imagePath: StaticImageData | string
-  title: string
-  category: string
-  shortDescription: string
-  description: string
-  createdAt: string
-  features: string[]
-  tech: string[]
-  githubUrl: string
-  liveDemoUrl: string
-  isPrivateRepo: boolean
-}
+export { projectList }
+export type { ProjectItem }
 
 export default function Project() {
   const [isOpen, setIsOpen] = useState<number | null>(null)
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
+  const [flashingCardId, setFlashingCardId] = useState<string | null>(null)
   const mobileSliderRef = useRef<HTMLDivElement>(null)
+
+  // Handler seleksi project: mengisolasi kilatan HANYA pada kartu yang diklik
+  const handleSelectProject = (project: ProjectItem) => {
+    // 1. Kunci ID kartu unik untuk efek kilatan eksklusif pada kartu tersebut
+    setActiveProjectId(project.id)
+    setFlashingCardId(project.id)
+
+    // 2. Buka modal detail project
+    setIsOpen(project.index)
+
+    // 3. Reset efek kilatan setelah durasi animasi berakhir
+    setTimeout(() => {
+      setFlashingCardId(null)
+    }, 700)
+  }
 
   // Touch event handlers untuk mobile touch agar tidak freeze setelah disentuh
   const handleTouchStart = () => {
@@ -69,54 +71,13 @@ export default function Project() {
         {/* Desktop View: Grid */}
         <div className="hidden lg:grid max-w-7xl mx-auto grid-cols-3 gap-8 px-6 md:px-12">
           {projectList.map((project, index) => (
-            <FadeUp key={`desktop-${index}`}>
-              <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl">
-                <div
-                  className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2 cursor-pointer"
-                  onClick={() => setIsOpen(project.index)}
-                >
-                  <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
-
-                  {/* Tech Stack Overlay */}
-                  <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10 opacity-0 group-hover:opacity-100 translate-y-1 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none">
-                    {project.tech.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 3 && <span className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">+{project.tech.length - 3}</span>}
-                  </div>
-                </div>
-
-                <div className="p-6 md:p-8 flex flex-col flex-grow relative">
-                  {/* Numbering */}
-                  <div className="absolute top-0 right-6 -translate-y-1/2 bg-background border border-text-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-text-secondary shadow-sm">{String(project.index + 1).padStart(2, "0")}</div>
-
-                  <div className="flex flex-col mb-4 cursor-pointer" onClick={() => setIsOpen(project.index)}>
-                    <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
-                      {project.category}
-                    </span>
-                    <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-text-secondary transition-colors duration-300">
-                      {project.title}
-                    </h4>
-                  </div>
-
-                  <p className="text-sm text-text-secondary font-medium leading-relaxed mb-8 flex-grow line-clamp-3">{project.shortDescription}</p>
-
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
-                    <button className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn" onClick={() => setIsOpen(project.index)}>
-                      Lihat Detail
-                      <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
-                    </button>
-
-                    <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300" title="Visit Live Site">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </GlareHover>
+            <FadeUp key={`desktop-${project.id}`}>
+              <ProjectCard
+                project={project}
+                isFlashing={flashingCardId === project.id}
+                onSelect={handleSelectProject}
+                priority={index === 0}
+              />
             </FadeUp>
           ))}
         </div>
@@ -131,109 +92,25 @@ export default function Project() {
             onTouchCancel={handleTouchEnd}
           >
             <div className="flex gap-6 px-3">
-              {projectList.map((project, index) => (
-                <div key={`mobile1-${index}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
-                  <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl">
-                    <div
-                      className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2 cursor-pointer"
-                      onClick={() => setIsOpen(project.index)}
-                    >
-                      <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
-
-                      {/* Tech Stack Overlay */}
-                      <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10 opacity-0 group-hover:opacity-100 translate-y-1 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none">
-                        {project.tech.slice(0, 3).map((tech, i) => (
-                          <span key={i} className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">
-                            {tech}
-                          </span>
-                        ))}
-                        {project.tech.length > 3 && <span className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">+{project.tech.length - 3}</span>}
-                      </div>
-                    </div>
-
-                    <div className="p-6 md:p-8 flex flex-col flex-grow relative">
-                      {/* Numbering */}
-                      <div className="absolute top-0 right-6 -translate-y-1/2 bg-background border border-text-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-text-secondary shadow-sm">{String(project.index + 1).padStart(2, "0")}</div>
-
-                      <div className="flex flex-col mb-4 cursor-pointer" onClick={() => setIsOpen(project.index)}>
-                        <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
-                          {project.category}
-                        </span>
-                        <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-text-secondary transition-colors duration-300">
-                          {project.title}
-                        </h4>
-                      </div>
-
-                      <p className="text-sm text-text-secondary font-medium leading-relaxed mb-8 flex-grow line-clamp-3">{project.shortDescription}</p>
-
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
-                        <button className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn" onClick={() => setIsOpen(project.index)}>
-                          Lihat Detail
-                          <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
-                        </button>
-
-                        <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300" title="Visit Live Site">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </GlareHover>
+              {projectList.map((project) => (
+                <div key={`mobile1-${project.id}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
+                  <ProjectCard
+                    project={project}
+                    isFlashing={flashingCardId === project.id}
+                    onSelect={handleSelectProject}
+                  />
                 </div>
               ))}
             </div>
 
             <div className="flex gap-6 px-3">
-              {projectList.map((project, index) => (
-                <div key={`mobile2-${index}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
-                  <GlareHover className="group flex flex-col h-full bg-background border border-text-secondary/20 hover:border-text-primary/50 rounded-xl overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl">
-                    <div
-                      className="relative overflow-hidden aspect-[16/9] bg-thirdary/15 border-b border-text-secondary/10 flex items-center justify-center p-2 cursor-pointer"
-                      onClick={() => setIsOpen(project.index)}
-                    >
-                      <Image src={project.imagePath} alt={project.title} fill className="object-contain p-2 transition-all duration-700 group-hover:scale-105" />
-
-                      {/* Tech Stack Overlay */}
-                      <div className="absolute top-3 right-3 flex flex-wrap gap-1.5 justify-end z-10 opacity-0 group-hover:opacity-100 translate-y-1 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none">
-                        {project.tech.slice(0, 3).map((tech, i) => (
-                          <span key={i} className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">
-                            {tech}
-                          </span>
-                        ))}
-                        {project.tech.length > 3 && <span className="text-[10px] font-bold bg-background/95 text-text-primary px-2 py-1 rounded backdrop-blur-md border border-text-secondary/20 uppercase tracking-widest shadow-sm">+{project.tech.length - 3}</span>}
-                      </div>
-                    </div>
-
-                    <div className="p-6 md:p-8 flex flex-col flex-grow relative">
-                      {/* Numbering */}
-                      <div className="absolute top-0 right-6 -translate-y-1/2 bg-background border border-text-secondary/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-text-secondary shadow-sm">{String(project.index + 1).padStart(2, "0")}</div>
-
-                      <div className="flex flex-col mb-4 cursor-pointer" onClick={() => setIsOpen(project.index)}>
-                        <span className="text-xs font-bold tracking-wider uppercase text-text-secondary mb-1">
-                          {project.category}
-                        </span>
-                        <h4 className="text-2xl font-black text-text-primary tracking-tight leading-tight group-hover:text-text-secondary transition-colors duration-300">
-                          {project.title}
-                        </h4>
-                      </div>
-
-                      <p className="text-sm text-text-secondary font-medium leading-relaxed mb-8 flex-grow line-clamp-3">{project.shortDescription}</p>
-
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
-                        <button className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn" onClick={() => setIsOpen(project.index)}>
-                          Lihat Detail
-                          <span className="w-8 h-[2px] bg-text-primary group-hover/btn:w-12 transition-all duration-300"></span>
-                        </button>
-
-                        <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300" title="Visit Live Site">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </GlareHover>
+              {projectList.map((project) => (
+                <div key={`mobile2-${project.id}`} className="w-[85vw] sm:w-[400px] flex-shrink-0">
+                  <ProjectCard
+                    project={project}
+                    isFlashing={flashingCardId === project.id}
+                    onSelect={handleSelectProject}
+                  />
                 </div>
               ))}
             </div>
@@ -242,8 +119,13 @@ export default function Project() {
 
         <FadeUp>
           <div className="mt-16 flex justify-center w-full px-6">
-            <a href="https://github.com/farishilhams" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-background border border-text-secondary/20 text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-background rounded-xl font-bold tracking-widest text-sm uppercase transition-all duration-300 ease-out group hover:-translate-y-1.5 hover:scale-[1.02] shadow-sm hover:shadow-xl">
-              <span>Lihat Proyek Lainnya</span>
+            <a
+              href="https://github.com/farishilhams"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-background border border-text-secondary/20 text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-background rounded-xl font-bold tracking-widest text-sm uppercase transition-all duration-300 ease-out group hover:-translate-y-1.5 hover:scale-[1.02] shadow-sm hover:shadow-xl"
+            >
+              <span>View More Project</span>
               <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -251,14 +133,28 @@ export default function Project() {
           </div>
         </FadeUp>
 
+        {/* Modal Detail Proyek (View Details) */}
         <AnimatePresence>
           {isOpen !== null && activeProject && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
               {/* Backdrop */}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0 bg-background/90 backdrop-blur-md" onClick={() => setIsOpen(null)} />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-background/90 backdrop-blur-md"
+                onClick={() => setIsOpen(null)}
+              />
 
               {/* Modal Container */}
-              <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} transition={{ type: "spring", damping: 25, stiffness: 300 }} className="bg-background border border-text-secondary/20 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative z-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="bg-background border border-text-secondary/20 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative z-10"
+              >
                 {/* Modal Header */}
                 <div className="flex justify-between items-center p-6 border-b border-text-secondary/10">
                   <div>
@@ -267,7 +163,12 @@ export default function Project() {
                     </span>
                     <h4 className="text-2xl font-black text-text-primary tracking-tight">{activeProject.title}</h4>
                   </div>
-                  <button className="text-text-secondary hover:text-text-primary transition-colors p-2 bg-text-secondary/5 rounded-full" onClick={() => setIsOpen(null)}>
+                  <button
+                    type="button"
+                    className="text-text-secondary hover:text-text-primary transition-colors p-2 bg-text-secondary/5 rounded-full"
+                    onClick={() => setIsOpen(null)}
+                    title="Tutup Modal"
+                  >
                     <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -281,19 +182,10 @@ export default function Project() {
                     <Image src={activeProject.imagePath} alt={activeProject.title} fill className="object-contain p-2" priority />
                   </div>
 
-                  {/* Penjelasan Proyek Lengkap */}
-                  <div className="mb-8 bg-thirdary/30 p-5 rounded-2xl border border-text-secondary/10">
-                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-2.5">
-                      Penjelasan Proyek
-                    </span>
-                    <p className="text-sm sm:text-base text-text-primary leading-relaxed font-medium">
-                      {activeProject.description || activeProject.shortDescription}
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 pb-8 border-b border-text-secondary/10">
+                  {/* Metadata Row: Waktu Rilis & Teknologi */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8 pb-8 border-b border-text-secondary/10">
                     <div>
-                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Waktu Pembuatan</span>
+                      <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">Waktu Rilis</span>
                       <span className="text-sm font-bold bg-thirdary text-text-primary px-3 py-1.5 rounded-lg border border-text-secondary/10">{activeProject.createdAt}</span>
                     </div>
                     <div>
@@ -308,12 +200,31 @@ export default function Project() {
                     </div>
                   </div>
 
+                  {/* Deskripsi Lengkap Proyek (Perbaikan render konten 'View Details') */}
+                  <div className="mb-8 pb-8 border-b border-text-secondary/10">
+                    <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">
+                      Tentang Proyek
+                    </span>
+                    <div className="bg-thirdary/30 p-5 md:p-6 rounded-2xl border border-text-secondary/10 space-y-3">
+                      <p className="text-sm md:text-base text-text-secondary font-medium leading-relaxed">
+                        {activeProject.longDescription || activeProject.details || activeProject.description || activeProject.shortDescription}
+                      </p>
+                      {activeProject.details && (
+                        <p className="text-xs md:text-sm text-text-secondary/80 leading-relaxed pt-3 border-t border-text-secondary/10">
+                          <span className="font-bold text-text-primary">Implementasi Teknis: </span>
+                          {activeProject.details}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Fitur Utama */}
                   <div>
                     <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-5">Fitur Utama</span>
-                    <ul className="space-y-4">
+                    <ul className="space-y-3.5">
                       {activeProject.features.map((feature, i) => (
-                        <li key={i} className="flex items-center bg-thirdary/50 p-4 rounded-xl border border-text-secondary/5">
-                          <span className="text-text-primary mr-3 font-black">&rarr;</span>
+                        <li key={i} className="flex items-start bg-thirdary/50 p-4 rounded-xl border border-text-secondary/5">
+                          <span className="text-text-primary mr-3 font-black text-sm shrink-0">&rarr;</span>
                           <span className="text-sm font-bold text-text-primary uppercase tracking-wide">{feature}</span>
                         </li>
                       ))}
@@ -324,18 +235,18 @@ export default function Project() {
                 {/* Modal Footer */}
                 <div className="p-6 border-t border-text-secondary/10 flex flex-col sm:flex-row gap-4 bg-background">
                   <a href={activeProject.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 text-center font-bold text-sm tracking-widest uppercase bg-text-primary text-background py-4 rounded-xl hover:-translate-y-1 transition-transform duration-300">
-                    Kunjungi Website
+                    Lihat Demo
                   </a>
                   {activeProject.isPrivateRepo ? (
                     <button disabled className="flex-1 flex justify-center items-center gap-2 text-center font-bold text-sm tracking-widest uppercase border-2 border-text-secondary/20 text-text-secondary opacity-50 cursor-not-allowed py-4 rounded-xl">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
-                      Private Repository
+                      Source Code
                     </button>
                   ) : (
                     <a href={activeProject.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 text-center font-bold text-sm tracking-widest uppercase border-2 border-text-secondary/20 text-text-primary hover:border-text-primary hover:-translate-y-1 transition-all duration-300 py-4 rounded-xl">
-                      Lihat Source Code
+                      Source Code
                     </a>
                   )}
                 </div>
@@ -347,63 +258,3 @@ export default function Project() {
     </>
   )
 }
-
-const projectList: ProjectItem[] = [
-  {
-    index: 0,
-    imagePath: batikGemsImg,
-    title: "BatikGems E-Commerce",
-    category: "Aplikasi Web & E-Commerce",
-    shortDescription: "Platform e-commerce busana batik dengan integrasi RajaOngkir API untuk kalkulasi ongkir real-time otomatis, manajemen transaksi menyeluruh, serta sistem pengelolaan stok multi-varian ukuran berbasis PHP dan MySQL.",
-    description: "BatikGems merupakan platform web e-commerce busana batik nusantara yang dirancang untuk memberikan pengalaman berbelanja daring yang cepat dan mudah. Aplikasi ini mengintegrasikan RajaOngkir API untuk menghitung tarif ongkos kirim ekspedisi secara real-time dan akurat ke seluruh wilayah Indonesia. Dilengkapi sistem manajemen inventaris multi-varian ukuran (S, M, L, XL), alur transaksi pemesanan terstruktur, serta dashboard admin komprehensif untuk memantau pesanan masuk, penjualan, dan stok barang secara terorganisir.",
-    createdAt: "Juni 2024",
-    features: [
-      "Integrasi RajaOngkir API untuk Tarif Ongkir Real-Time Otomatis",
-      "Sistem Manajemen Stok & Multi-Varian Ukuran Produk",
-      "Alur Transaksi & Konfirmasi Pemesanan Terintegrasi",
-      "Dashboard Admin Pengelolaan Inventaris & Laporan Penjualan",
-    ],
-    tech: ["PHP", "MySQL", "RajaOngkir API", "JavaScript", "Bootstrap", "REST API"],
-    githubUrl: "https://github.com/farishilhams/E-Commerce-Batik",
-    liveDemoUrl: "https://batikgems.infinityfreeapp.com",
-    isPrivateRepo: false,
-  },
-  {
-    index: 1,
-    imagePath: mpstorePanelImg,
-    title: "MPStore Web Panel",
-    category: "Platform Web Enterprise",
-    shortDescription: "Web panel manajemen sistem internal ekosistem digital MPStore dengan proteksi keamanan 5 tingkat Role-Based Access Control (RBAC), arsitektur RESTful API berkinerja tinggi, dan integrasi Supabase PostgreSQL.",
-    description: "MPStore Web Panel adalah sistem dashboard operasional internal enterprise yang dirancang khusus untuk memonitor dan mengelola ekosistem digital MPStore SuperApps. Aplikasi ini mengimplementasikan sistem keamanan Role-Based Access Control (RBAC) dengan 5 tingkatan hak akses pengguna guna menjamin integritas dan kerahasiaan data internal perusahaan. Dibangun dengan RESTful API Express.js berkecepatan tinggi, database Supabase PostgreSQL yang andal, serta antarmuka modern berbasis React 19 + Vite yang responsif, dinamis, dan teroptimasi.",
-    createdAt: "Agustus 2025",
-    features: [
-      "Proteksi Keamanan 5 Tingkat Hak Akses Pengguna (RBAC)",
-      "Arsitektur RESTful API Berkinerja Tinggi & Teruji Postman",
-      "Integrasi Cloud Database Supabase PostgreSQL Skalabel",
-      "Manajemen User, Hak Akses, & Monitoring Ekosistem Real-Time",
-    ],
-    tech: ["React 19", "Vite", "Express.js", "TypeScript", "Supabase", "Tailwind CSS"],
-    githubUrl: "https://github.com/farishilhams/Website-Panel",
-    liveDemoUrl: "https://website-panel-mpstore.vercel.app/",
-    isPrivateRepo: false,
-  },
-  {
-    index: 2,
-    imagePath: graphragSearchImg,
-    title: "GraphRAG Search Engine",
-    category: "Platform AI / Machine Learning & Pencarian",
-    shortDescription: "Mesin pencari cerdas berbasis Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs untuk eksplorasi dan temu balik informasi dokumen skripsi Teknik Informatika UTM secara semantik.",
-    description: "GraphRAG Search Engine adalah platform pencarian cerdas berbasis kecerdasan buatan (AI) yang menggabungkan metode Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs untuk eksplorasi serta analisis semantik dokumen skripsi Teknik Informatika Universitas Trunojoyo Madura. Sistem ini mampu menghubungkan entitas topik riset, metodologi, dan pengarang dalam basis data grafis Neo4j, memungkinkan temu balik informasi kontekstual yang jauh lebih cerdas, akurat, dan komprehensif dibandingkan mesin pencari berbasis kata kunci tradisional.",
-    createdAt: "Februari 2026",
-    features: [
-      "Pipeline Temu Balik Informasi Graph Retrieval-Augmented Generation (GraphRAG)",
-      "Pemetaan Entitas & Relasi Riset Menggunakan Neo4j Knowledge Graphs",
-      "Pencarian Semantik Kontekstual Berbasis Natural Language Processing (NLP)",
-      "Antarmuka Analitik & Visualisasi Grafis Interaktif Berbasis Streamlit",
-    ],
-    tech: ["Python", "Streamlit", "GraphRAG", "Knowledge Graphs", "Neo4j", "LLM / NLP"],
-    githubUrl: "https://github.com/farishilhams/GraphRAG-Search-Engine",
-    liveDemoUrl: "https://graphrag-search-engine.streamlit.app/",
-    isPrivateRepo: false,
-  },
-]
