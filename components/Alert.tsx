@@ -20,7 +20,11 @@ export default function AlertMessage({ type, message, onClose }: AlertMessagePro
           </h1>
           <p className="text-sm md:text-md text-text-secondary">{message}</p>
           <div className="flex flex-col items-center justify-center">
-            <button onClick={onClose} type="button" className="rounded-xl px-10 py-2 mt-4 text-sm font-semibold text-text-project-card bg-button-hero hover:bg-button-hero-hover active:bg-button-hero-hover">
+            <button
+              onClick={onClose}
+              type="button"
+              className="rounded-xl px-10 py-2.5 mt-4 text-sm font-semibold text-text-project-card bg-button-hero hover:bg-button-hero-hover active:bg-button-hero-hover min-h-[44px] min-w-[120px] flex items-center justify-center cursor-pointer transition-colors"
+            >
               OK
             </button>
           </div>

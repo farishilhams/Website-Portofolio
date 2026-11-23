@@ -12,14 +12,12 @@ export type { ProjectItem }
 
 export default function Project() {
   const [isOpen, setIsOpen] = useState<number | null>(null)
-  const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
   const [flashingCardId, setFlashingCardId] = useState<string | null>(null)
   const mobileSliderRef = useRef<HTMLDivElement>(null)
 
   // Handler seleksi project: mengisolasi kilatan HANYA pada kartu yang diklik/disentuh
   const handleSelectProject = (project: ProjectItem, cardKey?: string) => {
     // 1. Kunci ID instance kartu unik untuk efek kilatan eksklusif pada kartu tersebut (desktop maupun mobile)
-    setActiveProjectId(project.id)
     setFlashingCardId(cardKey || project.id)
 
     // 2. Berikan jeda mikro (180ms) agar kilatan cahaya terlihat jelas di layar sentuh mobile sebelum modal terbuka
@@ -181,9 +179,10 @@ export default function Project() {
                   </div>
                   <button
                     type="button"
-                    className="text-text-secondary hover:text-text-primary transition-colors p-2 bg-text-secondary/5 rounded-full"
+                    className="text-text-secondary hover:text-text-primary transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center p-2 bg-text-secondary/5 rounded-full cursor-pointer"
                     onClick={() => setIsOpen(null)}
                     title="Tutup Modal"
+                    aria-label="Tutup Modal Detail Proyek"
                   >
                     <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>

@@ -85,7 +85,14 @@ export default function Hero() {
               <span className="text-xs uppercase tracking-widest font-bold text-text-secondary mb-4 block">Connect</span>
               <div className="flex flex-row gap-4">
                 {socialMediaList.map((item, index) => (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="p-3 border border-text-secondary/20 rounded-xl hover:border-text-primary hover:bg-text-primary hover:text-background text-text-primary transition-all duration-300" key={index}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Kunjungi profil ${item.name} Farish`}
+                    className="p-3 border border-text-secondary/20 rounded-xl hover:border-text-primary hover:bg-text-primary hover:text-background text-text-primary transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer"
+                    key={index}
+                  >
                     {item.icon}
                   </a>
                 ))}
@@ -132,6 +139,7 @@ export default function Hero() {
 
 const socialMediaList = [
   {
+    name: "Instagram",
     href: "https://www.instagram.com/farishsyahrani?igsi=MWFlMnNweGFqN3Jtdg%3D%3D&utm_source=qr",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -140,6 +148,7 @@ const socialMediaList = [
     ),
   },
   {
+    name: "GitHub",
     href: "https://github.com/farishilhams",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -148,6 +157,7 @@ const socialMediaList = [
     ),
   },
   {
+    name: "LinkedIn",
     href: "https://www.linkedin.com/in/farish-ilham-syahrani/",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">

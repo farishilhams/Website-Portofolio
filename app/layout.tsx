@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Poppins } from "next/font/google"
 import "../styles/globals.css"
 import PageLoader from "@/components/PageLoader"
@@ -9,14 +9,35 @@ const poppins = Poppins({
   variable: "--font-poppins",
 })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fdfdfd" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://rishy.my.id"),
   title: {
     default: "Rishy | Portfolio",
     template: "%s | Rishy Portfolio",
   },
-  description: "Personal Portfolio of Farish Ilham Syahrani (Rishy). Full Stack Developer & Machine Learning Enthusiast specializing in Next.js, Node.js, and modern web development.",
-  keywords: ["Rishy", "Farish Ilham Syahrani", "Portfolio", "Full Stack Developer", "Machine Learning", "Backend Developer", "Next.js", "React", "Node.js"],
+  description:
+    "Personal Portfolio of Farish Ilham Syahrani (Rishy). Full Stack Developer & Machine Learning Enthusiast specializing in Next.js, Node.js, and modern web development.",
+  keywords: [
+    "Rishy",
+    "Farish Ilham Syahrani",
+    "Portfolio",
+    "Full Stack Developer",
+    "Machine Learning",
+    "Backend Developer",
+    "Next.js",
+    "React",
+    "Node.js",
+  ],
   authors: [{ name: "Farish Ilham Syahrani" }],
   creator: "Farish Ilham Syahrani",
   openGraph: {
@@ -24,7 +45,8 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "/",
     title: "Rishy | Portfolio",
-    description: "Personal Portfolio of Farish Ilham Syahrani (Rishy). Full Stack Developer & Machine Learning Enthusiast.",
+    description:
+      "Personal Portfolio of Farish Ilham Syahrani (Rishy). Full Stack Developer & Machine Learning Enthusiast.",
     siteName: "Rishy Portfolio",
     images: [
       {
@@ -38,7 +60,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Rishy | Portfolio",
-    description: "Personal Portfolio of Farish Ilham Syahrani (Rishy). Full Stack Developer & Machine Learning Enthusiast.",
+    description:
+      "Personal Portfolio of Farish Ilham Syahrani (Rishy). Full Stack Developer & Machine Learning Enthusiast.",
     images: ["/images/profile.jpg"],
     creator: "@farishsyahrani",
   },
@@ -61,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body className={`${poppins.className} antialiased`}>
         <PageLoader />
         {children}
@@ -69,4 +92,3 @@ export default function RootLayout({
     </html>
   )
 }
-

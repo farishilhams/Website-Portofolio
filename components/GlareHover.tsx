@@ -57,7 +57,10 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   // Efek kilatan programmatic HANYA aktif jika isTriggered bernilai true untuk instance kartu ini
   useEffect(() => {
     if (isTriggered) {
-      triggerSweep()
+      const raf = requestAnimationFrame(() => {
+        triggerSweep()
+      })
+      return () => cancelAnimationFrame(raf)
     }
   }, [isTriggered, triggerSweep])
 

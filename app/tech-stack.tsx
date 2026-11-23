@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import FadeDown from "@/components/animations/FadeDown"
 import FadeUp from "@/components/animations/FadeUp"
 
@@ -30,7 +31,7 @@ export default function TechStack() {
                         tech.svg.startsWith("<") ? (
                           <div className="w-full h-full" dangerouslySetInnerHTML={{ __html: tech.svg }} />
                         ) : (
-                          <img src={tech.svg} alt={tech.name} className="w-full h-full tech-icon-img" />
+                          <Image src={tech.svg} alt={tech.name} width={48} height={48} className="w-full h-full tech-icon-img" />
                         )
                       ) : (
                         <div className="w-full h-full flex items-center justify-center font-bold text-xl bg-thirdary/50 rounded-lg">{tech.name.charAt(0)}</div>

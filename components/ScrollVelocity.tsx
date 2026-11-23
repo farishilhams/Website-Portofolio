@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useLayoutEffect, useState } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from "motion/react"
 
 interface VelocityMapping {
@@ -40,7 +40,7 @@ interface ScrollVelocityProps {
 function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T | null>): number {
   const [width, setWidth] = useState(0)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateWidth() {
       if (ref.current) {
         setWidth(ref.current.offsetWidth)

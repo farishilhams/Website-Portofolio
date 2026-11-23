@@ -1,9 +1,53 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI from "openai"
+import { z } from "zod"
 
-interface HistoryEntry {
+type HistoryEntry = {
   role: "system" | "user" | "assistant"
   content: string
+}
+
+// Validasi skema ketat menggunakan Zod untuk mencegah payload abuse dan eksploitasi token
+const ChatRequestSchema = z.object({
+  text: z
+    .string()
+    .trim()
+    .min(1, "Pesan tidak boleh kosong.")
+    .max(1000, "Pesan terlalu panjang (maksimal 1000 karakter)."),
+  history: z
+    .array(
+      z.object({
+        role: z.enum(["system", "user", "assistant"]),
+        content: z.string().max(2000, "Riwayat pesan terlalu panjang (maksimal 2000 karakter)."),
+      })
+    )
+    .max(20, "Riwayat percakapan melebihi batas maksimal 20 item.")
+    .optional()
+    .default([]),
+})
+
+// In-Memory Rate Limiter per IP (Maksimal 25 request per menit)
+const chatRateLimitMap = new Map<string, { count: number; resetTime: number }>()
+
+function checkChatRateLimit(ip: string): { allowed: boolean; retryAfterSeconds?: number } {
+  const now = Date.now()
+  const windowMs = 60 * 1000 // 1 menit
+  const maxRequests = 25
+
+  const record = chatRateLimitMap.get(ip)
+
+  if (!record || now > record.resetTime) {
+    chatRateLimitMap.set(ip, { count: 1, resetTime: now + windowMs })
+    return { allowed: true }
+  }
+
+  if (record.count >= maxRequests) {
+    const retryAfterSeconds = Math.ceil((record.resetTime - now) / 1000)
+    return { allowed: false, retryAfterSeconds }
+  }
+
+  record.count += 1
+  return { allowed: true }
 }
 
 // System prompt resmi yang merepresentasikan persona Farish Ilham Syahrani (Rishy)
@@ -827,17 +871,46 @@ export async function POST(req: NextRequest) {
   let userText = ""
 
   try {
-    const body = await req.json().catch(() => null)
+    // 1. Ekstraksi IP Client untuk pembatasan frekuensi (Rate Limiting)
+    const forwarded = req.headers.get("x-forwarded-for")
+    const clientIp = forwarded ? forwarded.split(",")[0].trim() : req.headers.get("x-real-ip") || "unknown-ip"
 
-    if (!body || typeof body.text !== "string" || !body.text.trim()) {
+    const rateLimit = checkChatRateLimit(clientIp)
+    if (!rateLimit.allowed) {
       return NextResponse.json(
-        { success: false, message: "Pesan tidak boleh kosong." },
+        {
+          success: false,
+          message: `Batas frekuensi pesan tercapai. Silakan coba kembali dalam ${rateLimit.retryAfterSeconds} detik.`,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(rateLimit.retryAfterSeconds || 60),
+          },
+        }
+      )
+    }
+
+    // 2. Parse & Validasi Request Body menggunakan Zod
+    const rawBody = await req.json().catch(() => null)
+    if (!rawBody) {
+      return NextResponse.json(
+        { success: false, message: "Format request tidak valid (wajib JSON)." },
         { status: 400 }
       )
     }
 
-    const { text, history = [] }: { text: string; history: HistoryEntry[] } = body
-    userText = text.trim()
+    const parseResult = ChatRequestSchema.safeParse(rawBody)
+    if (!parseResult.success) {
+      const firstError = parseResult.error.issues[0]?.message || "Validasi pesan gagal."
+      return NextResponse.json(
+        { success: false, message: firstError },
+        { status: 400 }
+      )
+    }
+
+    const { text, history } = parseResult.data
+    userText = text
 
     // Cek konfigurasi API Key penyedia AI dari environment variables
     const groqKey = process.env.GROQ_API_KEY?.trim()
@@ -891,29 +964,30 @@ export async function POST(req: NextRequest) {
     }
 
     // Susun riwayat chat dengan jaminan System Prompt persona Rishy
-    const validHistory = Array.isArray(history)
+    const validHistory: HistoryEntry[] = Array.isArray(history)
       ? history.filter((h) => h && (h.role === "user" || h.role === "assistant"))
       : []
 
-    const messages = [
+    const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
       { role: "system", content: RISHY_SYSTEM_PROMPT },
       ...validHistory.slice(-8),
       { role: "user", content: userText },
     ]
 
-    let completion: any = null
+    let completion: AsyncIterable<OpenAI.Chat.Completions.ChatCompletionChunk> | null = null
 
     // Percobaan 1: Menggunakan model utama
     try {
       completion = await client.chat.completions.create({
         model: primaryModel,
-        messages: messages as any,
+        messages: messages,
         temperature: 0.7,
         max_tokens: 1024,
         stream: true,
       })
-    } catch (primaryErr: any) {
-      console.warn(`[Chat API] Model utama '${primaryModel}' mengalami kendala:`, primaryErr?.message || primaryErr)
+    } catch (primaryErr: unknown) {
+      const primaryErrMsg = primaryErr instanceof Error ? primaryErr.message : String(primaryErr)
+      console.warn(`[Chat API] Model utama '${primaryModel}' mengalami kendala:`, primaryErrMsg)
 
       // Percobaan 2: Coba model fallback resmi jika tersedia
       if (fallbackModel && fallbackModel !== primaryModel) {
@@ -921,13 +995,14 @@ export async function POST(req: NextRequest) {
           console.log(`[Chat API] Mengalihkan ke model cadangan resmi '${fallbackModel}'...`)
           completion = await client.chat.completions.create({
             model: fallbackModel,
-            messages: messages as any,
+            messages: messages,
             temperature: 0.7,
             max_tokens: 1024,
             stream: true,
           })
-        } catch (fallbackErr: any) {
-          console.warn(`[Chat API] Model cadangan '${fallbackModel}' juga mengalami kendala:`, fallbackErr?.message || fallbackErr)
+        } catch (fallbackErr: unknown) {
+          const fallbackErrMsg = fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)
+          console.warn(`[Chat API] Model cadangan '${fallbackModel}' juga mengalami kendala:`, fallbackErrMsg)
           completion = null
         }
       }
@@ -948,7 +1023,7 @@ export async function POST(req: NextRequest) {
       const readable = new ReadableStream({
         async start(controller) {
           try {
-            for await (const chunk of completion) {
+            for await (const chunk of completion!) {
               const content = chunk.choices?.[0]?.delta?.content || ""
               if (content) {
                 hasEmittedChunk = true
@@ -980,11 +1055,12 @@ export async function POST(req: NextRequest) {
       console.error("[Chat API Stream Init Error]:", streamInitErr)
       return createStreamFromText(generateFallbackResponse(userText))
     }
-  } catch (fatalError: any) {
-    console.error("[Chat API Fatal Error]:", fatalError)
+  } catch (fatalError: unknown) {
+    const fatalErrMsg = fatalError instanceof Error ? fatalError.message : String(fatalError)
+    console.error("[Chat API Fatal Error]:", fatalErrMsg)
     // Jangan pernah mengembalikan pesan statis salam berulang jika terjadi error tak terduga.
     // Selalu jawab pertanyaan spesifik pengunjung dengan knowledge base cerdas.
-    const fallbackText = generateFallbackResponse(userText)
+    const fallbackText = generateFallbackResponse(userText || "halo")
     return createStreamFromText(fallbackText)
   }
 }

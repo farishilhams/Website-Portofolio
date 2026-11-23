@@ -100,7 +100,7 @@ export default function About() {
                 <FadeLeft delay={0.6}>
                   <div className="flex flex-col p-2 -m-2 rounded-xl transition-colors duration-300 hover:bg-thirdary/40">
                     <span className="text-xs uppercase tracking-widest font-bold text-text-secondary mb-1">Education</span>
-                    <span className="text-base font-semibold text-text-primary">Universitas Trunodjoyo Madura</span>
+                    <span className="text-base font-semibold text-text-primary">Universitas Trunojoyo Madura</span>
                   </div>
                 </FadeLeft>
               </div>

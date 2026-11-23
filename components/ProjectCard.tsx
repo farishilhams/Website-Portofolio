@@ -80,7 +80,7 @@ export default function ProjectCard({
           <div className="flex items-center justify-between mt-auto pt-4 border-t border-text-secondary/10">
             <button
               type="button"
-              className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn"
+              className="text-xs font-bold tracking-[0.2em] uppercase text-text-primary flex items-center gap-3 group/btn min-h-[44px] py-2 cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation()
                 onSelect(project, cardKey)
@@ -95,8 +95,9 @@ export default function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="p-2 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300"
+              className="min-w-[44px] min-h-[44px] p-2.5 border border-text-secondary/20 rounded-full text-text-secondary hover:text-background hover:bg-text-primary hover:border-text-primary transition-all duration-300 flex items-center justify-center cursor-pointer"
               title="Kunjungi Website"
+              aria-label={`Kunjungi Live Demo ${project.title}`}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

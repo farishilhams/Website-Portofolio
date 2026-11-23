@@ -98,9 +98,10 @@ export default function Header() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
-                className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors"
+                aria-label="Toggle Dark/Light Mode"
+                className="cursor-pointer text-text-secondary hover:text-text-primary transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-text-secondary/10"
                 onClick={() => {
                   toggleTheme()
                 }}
@@ -116,23 +117,27 @@ export default function Header() {
                 )}
               </button>
 
-              <button className="lg:hidden text-text-secondary" onClick={() => setIsOpen(!isOpen)}>
+              <button
+                aria-label="Toggle Navigation Menu"
+                className="lg:hidden text-text-secondary hover:text-text-primary min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-text-secondary/10"
+                onClick={() => setIsOpen(!isOpen)}
+              >
                 <svg className="w-6 md:w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
                 </svg>
               </button>
             </div>
 
-            <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"} md:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
-              {/* Mobile Menu Placeholder */}
-              <div className="flex flex-col gap-6 bg-background/95 backdrop-blur-md border border-text-secondary/10 p-6 rounded-2xl shadow-xl w-48">
+            <div className={`${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0 pointer-events-none"} lg:hidden transform absolute top-16 right-4 z-50 origin-top-right transition-all duration-300 ease-in-out`}>
+              {/* Mobile & Tablet Menu */}
+              <div className="flex flex-col gap-4 bg-background/95 backdrop-blur-md border border-text-secondary/10 p-6 rounded-2xl shadow-xl w-52">
                 {shortCut.map((item, index) => (
                   <button 
                     onClick={() => { handleScroll(item.link); setIsOpen(false); }} 
                     key={index} 
                     className={`
                       ${activeSection === item.name.toLowerCase() ? "text-text-primary font-bold" : "text-text-secondary font-medium"} 
-                      cursor-pointer text-sm md:text-base flex flex-row items-center hover:text-text-primary transition-colors duration-200 ease-in-out
+                      cursor-pointer text-base flex flex-row items-center py-2 px-1 hover:text-text-primary transition-colors duration-200 ease-in-out min-h-[44px]
                     `}
                   >
                     {item.name}
