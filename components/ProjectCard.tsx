@@ -73,7 +73,7 @@ export default function ProjectCard({
             </h4>
           </div>
 
-          <p className="text-sm text-text-secondary font-medium leading-relaxed mb-8 flex-grow line-clamp-3">
+          <p className="text-sm text-text-secondary font-medium leading-relaxed mb-8 flex-grow line-clamp-3 text-pretty">
             {project.shortDescription || project.description}
           </p>
 

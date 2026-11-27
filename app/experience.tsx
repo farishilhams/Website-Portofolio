@@ -26,7 +26,8 @@ const experiences: ExperienceItem[] = [
     company: "MPStore SuperApps",
     role: "Back-End Developer",
     date: "Juli 2025 - September 2025",
-    description: "Bertanggung jawab merancang dan mengembangkan arsitektur backend untuk Web Panel internal perusahaan. Membangun RESTful API dengan Express.js, mengelola integritas basis data, melakukan pengujian menyeluruh via Postman, serta berkolaborasi aktif mengintegrasikan API dengan Frontend React.js.",
+    description:
+      "Bertanggung jawab merancang dan mengembangkan arsitektur backend untuk Web Panel internal perusahaan. Selama magang, saya membangun RESTful API dengan Express.js, menjaga integritas basis data, menguji endpoint secara menyeluruh via Postman, serta berkolaborasi aktif dengan tim Frontend React.js.",
     skills: ["Express.js", "RESTful API", "MySQL", "Postman", "React.js"],
     images: [
       {
@@ -91,7 +92,7 @@ export default function Experience() {
                   <h4 className="text-2xl font-bold text-text-primary tracking-tight mb-1 group-hover/item:text-text-primary transition-colors">{exp.role}</h4>
                   <h5 className="text-sm font-bold text-text-secondary tracking-wide uppercase mb-6">{exp.company}</h5>
 
-                  <p className="text-base text-text-secondary font-medium leading-relaxed mb-6">{exp.description}</p>
+                  <p className="text-base text-text-secondary font-medium leading-relaxed mb-6 text-pretty">{exp.description}</p>
 
                   {/* Uniform Experience Images Gallery */}
                   {exp.images && exp.images.length > 0 && (

@@ -42,14 +42,28 @@ export default function About() {
               <div className="flex flex-col">
                 <Fade>
                   <h4 className="text-lg md:text-xl font-bold text-text-primary mb-4 flex items-center border-b border-text-secondary/20 pb-4">Who Am I</h4>
-                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya Full Stack Developer dan Machine Learning Engineer yang berpengalaman langsung membangun RESTful API, logika server, dan struktur basis data melalui peran magang maupun pengembangan web end-to-end. Di sisi pengolahan data, saya juga aktif melatih dan mengevaluasi model Machine Learning agar setiap sistem yang dibangun mampu memecahkan masalah secara tepat guna.</p>
+                  <div className="space-y-3 text-base text-text-secondary leading-relaxed font-medium text-pretty">
+                    <p>
+                      Saya Full Stack Developer dan Machine Learning Engineer yang berpengalaman membangun RESTful API, logika server, dan struktur basis data melalui peran magang maupun pengembangan web <span className="italic">end-to-end</span>.
+                    </p>
+                    <p>
+                      Di sisi pengolahan data, saya aktif melatih dan mengevaluasi model Machine Learning agar setiap sistem yang dibangun mampu memecahkan masalah secara tepat guna.
+                    </p>
+                  </div>
                 </Fade>
               </div>
 
               <div className="flex flex-col">
                 <Fade>
                   <h4 className="text-lg md:text-xl font-bold text-text-primary mb-4 flex items-center border-b border-text-secondary/20 pb-4">My Approach</h4>
-                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya berkomitmen membangun sistem yang efisien, terstruktur, dan mudah dikembangkan melalui praktik rekayasa perangkat lunak yang bersih, pengujian yang teliti, serta integrasi antarmuka dan pemrosesan data yang andal.</p>
+                  <div className="space-y-3 text-base text-text-secondary leading-relaxed font-medium text-pretty">
+                    <p>
+                      Saya berkomitmen membangun sistem yang efisien, terstruktur, dan mudah dikembangkan melalui praktik rekayasa perangkat lunak yang bersih.
+                    </p>
+                    <p>
+                      Setiap tahap pengembangan selalu saya imbangi dengan pengujian yang teliti agar integrasi antara antarmuka pengguna dan pemrosesan data tetap berjalan andal.
+                    </p>
+                  </div>
                 </Fade>
               </div>
             </div>
