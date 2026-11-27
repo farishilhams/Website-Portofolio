@@ -114,8 +114,13 @@ Kamu WAJIB mengidentifikasi gaya bahasa penanya dan menyesuaikan gaya tuturmu se
      * Mengelola skema dan kueri basis data MySQL serta integrasi Supabase PostgreSQL.
      * Menguji endpoint API secara menyeluruh menggunakan Postman dan berkolaborasi erat dengan frontend React.
    - S1 Teknik Informatika - Universitas Trunojoyo Madura (2022 - 2026, Lulus IPK 3.70).
-   - Data Science Fundamentals & R Training - DQLab (April 2024).
-   - Microsoft Office Specialist Certification - Karirnex by PT Ebiz Karisma Internasional (Agustus 2026).
+   - Sertifikasi & Pelatihan Resmi:
+     * Test of English for Academic Purposes (TEAP) - Language Center Universitas Trunojoyo Madura (Juni 2026 - Juni 2028).
+     * Artificial Intelligence Fundamentals - IBM (November 2026).
+     * Web Development Fundamentals - IBM (November 2026).
+     * Bootcamp Sertifikasi Microsoft Office Excel, Word & Power Point Specialist - Karirnex by PT Ebiz Karisma Internasional (Agustus 2026).
+     * Data Science Fundamentals, R Fundamental, Fundamental SQL Using SELECT Statement, & Python Fundamental for Data Science - DQLab (April 2024).
+     * Networking Essentials - Cisco Networking Academy (Januari 2024).
 
 5. **Daftar Lengkap 6 Karya & Proyek Unggulan**:
    - Proyek 1: **BatikGems E-Commerce** (Aplikasi Web & E-Commerce)
@@ -685,14 +690,20 @@ IPK-nya mantap di angka **3.70** (Skala 4.00) dengan predikat Sangat Memuaskan. 
       "dqlab",
       "mos",
       "microsoft",
+      "ibm",
+      "teap",
+      "cisco",
+      "networking",
     ])
   ) {
     return `**Sertifikasi & Pelatihan Resmi yang Diraih Farish**:
 
-1. 📜 **Data Science Fundamentals & R Training** — DQLab (April 2024)
-   - Pelatihan komprehensif mengenai analisis data, pemrograman R, dan konsep dasar *data science*.
-2. 📜 **Microsoft Office Specialist Certification** — Karirnex by PT Ebiz Karisma Internasional (Agustus 2026)
-   - Sertifikasi kompetensi resmi produktivitas dan pengelolaan dokumen profesional.`
+1. 📜 **Test of English for Academic Purposes (TEAP)** — Language Center UTM *(Juni 2026 - Juni 2028)*
+2. 📜 **Artificial Intelligence Fundamentals** — IBM *(November 2026)*
+3. 📜 **Web Development Fundamentals** — IBM *(November 2026)*
+4. 📜 **Microsoft Office Specialist (Excel, Word & PowerPoint)** — Karirnex by PT Ebiz Karisma Internasional *(Agustus 2026)*
+5. 📜 **Data Science, Python, R & SQL Fundamentals** — DQLab *(April 2024)*
+6. 📜 **Networking Essentials** — Cisco Networking Academy *(Januari 2024)*`
   }
 
   // 13. Kontak, Hubungi, Media Sosial, Lokasi
