@@ -63,7 +63,7 @@ export default function Hero() {
             </div>
 
             <div className="max-w-xl mt-4">
-              <p className="text-text-secondary text-base md:text-lg leading-relaxed font-medium">Halo! Saya suka ngoding dan bereksperimen dengan ide-ide baru di dunia web development dan machine learning. Sebagai lulusan Teknik Informatika, bagi saya setiap baris kode adalah cara untuk menghadirkan solusi cerdas, efisien, dan keren di dunia digital.</p>
+              <p className="text-text-secondary text-base md:text-lg leading-relaxed font-medium">Halo! Sebagai lulusan Teknik Informatika yang gemar bereksperimen dengan teknologi baru, saya menikmati setiap proses mengubah ide menjadi produk digital yang nyata mulai dari pengembangan aplikasi web modern hingga sistem cerdas berbasis data.</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">

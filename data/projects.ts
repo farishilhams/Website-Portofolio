@@ -88,7 +88,7 @@ export const projectList: ProjectItem[] = [
     description:
       "Platform temu balik informasi mutakhir yang menggabungkan Graph Retrieval-Augmented Generation (GraphRAG) dengan Knowledge Graphs berbasis Neo4j untuk memahami relasi makna dan konteks riset dokumen akademik secara mendalam.",
     longDescription:
-      "Merupakan riset skripsi inovatif di program studi Teknik Informatika Universitas Trunojoyo Madura yang memecahkan keterbatasan pencarian teks konvensional. Dokumen skripsi diurai dan ditransformasikan ke dalam struktur graf pengetahuan (Knowledge Graph) di Neo4j. Memanfaatkan Large Language Model (LLM) dan algoritma GraphRAG untuk memetakan hubungan keterkaitan antar-topik, penulis, konsep algoritma, dan metodologi, menghasilkan jawaban dan rangkuman akademis kontekstual dengan antarmuka interaktif Streamlit.",
+      "Merupakan riset skripsi inovatif di program studi Teknik Informatika Universitas Trunodjoyo Madura yang memecahkan keterbatasan pencarian teks konvensional. Dokumen skripsi diurai dan ditransformasikan ke dalam struktur graf pengetahuan (Knowledge Graph) di Neo4j. Memanfaatkan Large Language Model (LLM) dan algoritma GraphRAG untuk memetakan hubungan keterkaitan antar-topik, penulis, konsep algoritma, dan metodologi, menghasilkan jawaban dan rangkuman akademis kontekstual dengan antarmuka interaktif Streamlit.",
     details:
       "Menggunakan Python sebagai bahasa inti analisis data, PyTorch dan Scikit-Learn untuk pemrosesan NLP, basis data graf Neo4j untuk traversal jalur relasi semantik berkecepatan tinggi, serta Streamlit Cloud untuk penyajian visualisasi graf interaktif yang mudah diakses.",
     createdAt: "Februari 2026",

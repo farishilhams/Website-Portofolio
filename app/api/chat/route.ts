@@ -87,7 +87,7 @@ Kamu WAJIB mengidentifikasi gaya bahasa penanya dan menyesuaikan gaya tuturmu se
 1. **Identitas & Profil Pribadi**:
    - Nama Lengkap: Farish Ilham Syahrani
    - Nama Panggilan / Brand: Rishy
-   - Status & Gelar: Fresh Graduate S1 Teknik Informatika (Universitas Trunojoyo Madura, 2022 - 2026, Lulus dengan IPK 3.70 / Predikat Sangat Memuaskan).
+   - Status & Gelar: Fresh Graduate S1 Teknik Informatika (Universitas Trunodjoyo Madura, 2022 - 2026, Lulus dengan IPK 3.70 / Predikat Sangat Memuaskan).
    - Spesialisasi / Profesi: Full Stack Developer & Machine Learning Engineer.
    - Domisili / Lokasi: Kamal, Kab. Bangkalan, Madura, Jawa Timur, Indonesia.
    - Karakter Kerja: Berorientasi pada arsitektur bersih (clean code & clean architecture), skalabilitas sistem, performa komputasi tinggi, desain modern responsif (mobile & desktop), serta pemanfaatan data & Machine Learning cerdas.
@@ -113,9 +113,9 @@ Kamu WAJIB mengidentifikasi gaya bahasa penanya dan menyesuaikan gaya tuturmu se
      * Mengembangkan proteksi keamanan 5 tingkatan Role-Based Access Control (RBAC).
      * Mengelola skema dan kueri basis data MySQL serta integrasi Supabase PostgreSQL.
      * Menguji endpoint API secara menyeluruh menggunakan Postman dan berkolaborasi erat dengan frontend React.
-   - S1 Teknik Informatika - Universitas Trunojoyo Madura (2022 - 2026, Lulus IPK 3.70).
+   - S1 Teknik Informatika - Universitas Trunodjoyo Madura (2022 - 2026, Lulus IPK 3.70).
    - Sertifikasi & Pelatihan Resmi:
-     * Test of English for Academic Purposes (TEAP) - Language Center Universitas Trunojoyo Madura (Juni 2026 - Juni 2028).
+     * Test of English for Academic Purposes (TEAP) - Language Center Universitas Trunodjoyo Madura (Juni 2026 - Juni 2028).
      * Artificial Intelligence Fundamentals - IBM (November 2026).
      * Web Development Fundamentals - IBM (November 2026).
      * Bootcamp Sertifikasi Microsoft Office Excel, Word & Power Point Specialist - Karirnex by PT Ebiz Karisma Internasional (Agustus 2026).
@@ -450,7 +450,7 @@ Web panel manajemen operasional internal perusahaan yang dikembangkan oleh Faris
   if (hasWord(q, ["graphrag", "graph rag", "knowledge graph", "neo4j", "semantik"])) {
     return `🧠 **GraphRAG Search Engine** (Platform AI & Mesin Pencari Semantik)
 
-Platform temu balik informasi cerdas berbasis Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs karya riset skripsi Farish Ilham Syahrani di Universitas Trunojoyo Madura.
+Platform temu balik informasi cerdas berbasis Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs karya riset skripsi Farish Ilham Syahrani di Universitas Trunodjoyo Madura.
 
 **Fitur Utama**:
 - Mentransformasi dokumen skripsi ke dalam relasi graf pengetahuan Neo4j.
@@ -651,6 +651,7 @@ Tertarik ngebedah yang mana nih, bro?`
       "universitas",
       "kampus",
       "utm",
+      "trunodjoyo",
       "trunojoyo",
       "informatika",
       "jurusan",
@@ -665,13 +666,13 @@ Tertarik ngebedah yang mana nih, bro?`
     ])
   ) {
     if (tone === "casual") {
-      return `Farish itu lulusan **S1 Teknik Informatika** dari **Universitas Trunojoyo Madura** (angkatan 2022 - lulus 2026), bro!
+      return `Farish itu lulusan **S1 Teknik Informatika** dari **Universitas Trunodjoyo Madura** (angkatan 2022 - lulus 2026), bro!
 IPK-nya mantap di angka **3.70** (Skala 4.00) dengan predikat Sangat Memuaskan. Riset skripsinya mendalam banget seputar Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs.`
     }
 
     return `**Riwayat Pendidikan Farish Ilham Syahrani**:
 
-🎓 **S1 Teknik Informatika** — **Universitas Trunojoyo Madura** (2022 - 2026)
+🎓 **S1 Teknik Informatika** — **Universitas Trunodjoyo Madura** (2022 - 2026)
 - **Status**: Fresh Graduate
 - **IPK**: **3.70** (Skala 4.00, Predikat Sangat Memuaskan)
 - **Fokus Riset Skripsi**: Pengembangan Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs untuk sistem pencarian semantik dokumen skripsi.`
@@ -768,12 +769,12 @@ IPK-nya mantap di angka **3.70** (Skala 4.00) dengan predikat Sangat Memuaskan. 
     if (tone === "casual") {
       return `Kenalin bro, **Farish Ilham Syahrani** (biasa dipanggil **Rishy**) itu seorang **Full Stack Developer & Machine Learning Engineer** asal Kamal, Bangkalan, Madura.
 
-Dia baru aja lulus S1 Teknik Informatika di Universitas Trunojoyo Madura dengan IPK 3.70. Farish suka banget ngebangun web app modern berkinerja tinggi, API skalabel, dan implementasi AI/ML kayak GraphRAG, Naive Bayes, dan OCR.`
+Dia baru aja lulus S1 Teknik Informatika di Universitas Trunodjoyo Madura dengan IPK 3.70. Farish suka banget ngebangun web app modern berkinerja tinggi, API skalabel, dan implementasi AI/ML kayak GraphRAG, Naive Bayes, dan OCR.`
     }
 
     return `**Farish Ilham Syahrani** (akrab dipanggil **Rishy**) adalah seorang **Full Stack Developer & Machine Learning Engineer** yang berdomisili di Kamal, Kab. Bangkalan, Madura, Jawa Timur.
 
-Beliau merupakan Fresh Graduate **S1 Teknik Informatika** dari **Universitas Trunojoyo Madura** (lulus dengan predikat sangat memuaskan, IPK **3.70**).
+Beliau merupakan Fresh Graduate **S1 Teknik Informatika** dari **Universitas Trunodjoyo Madura** (lulus dengan predikat sangat memuaskan, IPK **3.70**).
 
 Farish memiliki dedikasi tinggi dalam merancang aplikasi web modern berkinerja tinggi serta riset terapan Machine Learning cerdas, mencakup ekosistem Next.js 16, React 19, Express.js, Graph Retrieval-Augmented Generation (GraphRAG), Knowledge Graphs, dan Progressive Web Apps.`
   }

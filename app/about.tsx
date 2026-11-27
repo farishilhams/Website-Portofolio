@@ -42,14 +42,14 @@ export default function About() {
               <div className="flex flex-col">
                 <Fade>
                   <h4 className="text-lg md:text-xl font-bold text-text-primary mb-4 flex items-center border-b border-text-secondary/20 pb-4">Who Am I</h4>
-                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya Full Stack Developer dan Machine Learning Engineer yang berpengalaman dalam merancang dan mengembangkan aplikasi modern menggunakan React.js, Next.js, Node.js, Express.js, Laravel, dan Python. Saya terampil dalam membangun RESTful APIs, merancang arsitektur backend, serta mengembangkan model Machine Learning dan Deep Learning untuk menghasilkan solusi cerdas berbasis data.</p>
+                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya Full Stack Developer dan Machine Learning Engineer yang berpengalaman langsung membangun RESTful API, logika server, dan struktur basis data melalui peran magang maupun pengembangan web end-to-end. Di sisi pengolahan data, saya juga aktif melatih dan mengevaluasi model Machine Learning agar setiap sistem yang dibangun mampu memecahkan masalah secara tepat guna.</p>
                 </Fade>
               </div>
 
               <div className="flex flex-col">
                 <Fade>
                   <h4 className="text-lg md:text-xl font-bold text-text-primary mb-4 flex items-center border-b border-text-secondary/20 pb-4">My Approach</h4>
-                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya berkomitmen untuk menghadirkan solusi yang efisien, mudah dikelola, dan skalabel melalui praktik terbaik rekayasa perangkat lunak, menggabungkan performa web modern dengan kekuatan otomasi serta kecerdasan buatan.</p>
+                  <p className="text-base text-text-secondary leading-relaxed font-medium">Saya berkomitmen membangun sistem yang efisien, terstruktur, dan mudah dikembangkan melalui praktik rekayasa perangkat lunak yang bersih, pengujian yang teliti, serta integrasi antarmuka dan pemrosesan data yang andal.</p>
                 </Fade>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function About() {
                 <FadeLeft delay={0.6}>
                   <div className="flex flex-col p-2 -m-2 rounded-xl transition-colors duration-300 hover:bg-thirdary/40">
                     <span className="text-xs uppercase tracking-widest font-bold text-text-secondary mb-1">Education</span>
-                    <span className="text-base font-semibold text-text-primary">Universitas Trunojoyo Madura</span>
+                    <span className="text-base font-semibold text-text-primary">Universitas Trunodjoyo Madura</span>
                   </div>
                 </FadeLeft>
               </div>
