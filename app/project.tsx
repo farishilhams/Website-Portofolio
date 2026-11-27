@@ -220,14 +220,10 @@ export default function Project() {
                     <span className="text-xs font-bold tracking-widest text-text-secondary uppercase block mb-3">
                       Tentang Proyek
                     </span>
-                    <div className="bg-thirdary/30 p-5 md:p-6 rounded-2xl border border-text-secondary/10 space-y-4">
-                      <div className="space-y-3 text-sm md:text-base text-text-secondary font-medium leading-relaxed text-pretty">
-                        {(activeProject.longDescription || activeProject.details || activeProject.description || activeProject.shortDescription)
-                          .split("\n\n")
-                          .map((paragraph, idx) => (
-                            <p key={idx}>{paragraph}</p>
-                          ))}
-                      </div>
+                    <div className="bg-thirdary/30 p-5 md:p-6 rounded-2xl border border-text-secondary/10 space-y-3">
+                      <p className="text-sm md:text-base text-text-secondary font-medium leading-relaxed whitespace-pre-line text-pretty">
+                        {activeProject.longDescription || activeProject.details || activeProject.description || activeProject.shortDescription}
+                      </p>
                       {activeProject.details && (
                         <p className="text-xs md:text-sm text-text-secondary/80 leading-relaxed pt-3 border-t border-text-secondary/10 text-pretty">
                           <span className="font-bold text-text-primary">Implementasi Teknis: </span>

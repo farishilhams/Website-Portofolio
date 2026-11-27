@@ -32,13 +32,13 @@ export const projectList: ProjectItem[] = [
     title: "BatikGems E-Commerce",
     category: "Aplikasi Web & E-Commerce",
     shortDescription:
-      "Platform e-commerce busana batik modern yang terintegrasi dengan API RajaOngkir untuk kalkulasi ongkos kirim real-time otomatis, serta manajemen stok dan varian ukuran busana yang dinamis.",
+      "Platform e-commerce busana batik modern dengan integrasi RajaOngkir API untuk kalkulasi ongkos kirim otomatis serta manajemen stok multi-varian.",
     description:
-      "BatikGems adalah platform e-commerce busana batik modern berbasis web yang dirancang untuk memfasilitasi transaksi busana batik nusantara secara digital dengan kalkulasi ongkir dinamis dan pelacakan pesanan otomatis.",
+      "BatikGems adalah platform e-commerce berbasis web yang dirancang untuk memfasilitasi transaksi busana batik nusantara secara digital dengan kalkulasi ongkir dinamis dan pelacakan pesanan otomatis.",
     longDescription:
-      "BatikGems E-Commerce hadir untuk mendigitalkan pemasaran busana batik tradisional agar menjangkau pasar nasional secara lebih luas. Menggunakan arsitektur PHP dan basis data MySQL yang andal, platform ini mengintegrasikan API RajaOngkir untuk menghitung ongkos kirim secara akurat ke seluruh wilayah Indonesia.\n\nSistem ini juga dilengkapi manajemen inventaris multi-varian ukuran, alur checkout terstruktur hingga invoice otomatis, serta panel admin intuitif untuk memantau penjualan dan ketersediaan stok.",
+      "BatikGems E-Commerce hadir untuk memperluas pemasaran busana batik tradisional ke pasar nasional melalui pengalaman belanja daring yang praktis. Platform ini mengintegrasikan API RajaOngkir agar pembeli dapat menghitung ongkos kirim secara akurat dan real-time ke seluruh wilayah Indonesia.\n\nDari sisi pengelolaan toko, sistem menyediakan manajemen inventaris multi-varian ukuran dan warna, alur checkout hingga faktur otomatis, serta panel admin untuk memantau pesanan dan laporan penjualan secara terpusat.",
     details:
-      "Arsitektur sistem dibangun menggunakan PHP native dengan pola MVC yang bersih, MySQL untuk pengelolaan data relasional terstruktur, JavaScript untuk validasi interaktif di sisi klien, serta Bootstrap agar antarmuka tetap responsif di semua perangkat.",
+      "Dibangun menggunakan PHP native berpola MVC yang terstruktur, basis data relasional MySQL, JavaScript untuk validasi interaktif di sisi klien, serta Bootstrap agar antarmuka tetap responsif di berbagai perangkat.",
     createdAt: "Juni 2024",
     features: [
       "Integrasi API Ekspedisi RajaOngkir untuk Estimasi Ongkir Otomatis & Akurat",
@@ -58,13 +58,13 @@ export const projectList: ProjectItem[] = [
     title: "MPStore Web Panel",
     category: "Platform Web Enterprise",
     shortDescription:
-      "Web panel internal ekosistem digital MPStore dengan arsitektur proteksi keamanan 5 tingkatan Role-Based Access Control (RBAC), Express.js RESTful API, dan basis data Supabase PostgreSQL.",
+      "Web panel operasional internal MPStore dengan proteksi 5 tingkat Role-Based Access Control (RBAC), Express.js REST API, dan Supabase PostgreSQL.",
     description:
-      "Sistem dashboard operasional terpusat perusahaan yang dirancang untuk mengelola ekosistem digital MPStore dengan proteksi keamanan otorisasi bertingkat dan integrasi basis data cloud.",
+      "Dashboard operasional terpusat yang dirancang untuk mengelola ekosistem digital MPStore dengan keamanan otorisasi bertingkat dan integrasi basis data cloud.",
     longDescription:
-      "Web panel ini dikembangkan selama masa magang sebagai Back-End Developer di MPStore SuperApps untuk menjadi pusat tata kelola operasional dan analitik data internal. Backend-nya memadukan Express.js dan TypeScript guna menghasilkan RESTful API yang cepat dan terstruktur.\n\nDari sisi keamanan dan antarmuka, platform ini menerapkan sistem proteksi 5 tingkatan hak akses (Role-Based Access Control), sinkronisasi basis data cloud Supabase PostgreSQL, manajemen akun tim, serta tampilan modern berbasis React 19 dan Vite.",
+      "Dikembangkan selama masa magang sebagai Back-End Developer di MPStore SuperApps, web panel ini berfungsi sebagai pusat tata kelola operasional dan analitik internal perusahaan. Arsitektur backend memadukan Express.js dan TypeScript untuk menghadirkan RESTful API yang cepat serta terstruktur.\n\nKeamanan sistem dijaga melalui proteksi 5 tingkat hak akses (Role-Based Access Control), dilengkapi sinkronisasi basis data cloud Supabase PostgreSQL, manajemen akun tim, serta antarmuka React 19 dan Vite yang modern.",
     details:
-      "Implementasi sistem mencakup autentikasi token JWT, enkripsi data, pengelolaan skema relasional PostgreSQL via Supabase, pengujian endpoint menyeluruh melalui Postman, serta manajemen state yang optimal di sisi frontend.",
+      "Mengimplementasikan autentikasi token JWT, pengelolaan skema relasional PostgreSQL melalui Supabase, pengujian endpoint menyeluruh dengan Postman, serta state management yang optimal di sisi frontend.",
     createdAt: "Agustus 2025",
     features: [
       "Proteksi Keamanan 5 Tingkat Akses (Role-Based Access Control / RBAC)",
@@ -84,13 +84,13 @@ export const projectList: ProjectItem[] = [
     title: "GraphRAG Search Engine",
     category: "Platform AI & Mesin Pencari Semantik",
     shortDescription:
-      "Mesin pencari akademik cerdas berbasis Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graphs untuk eksplorasi serta temu balik semantik dokumen skripsi Teknik Informatika UTM.",
+      "Mesin pencari semantik dokumen skripsi Teknik Informatika UTM berbasis Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graph Neo4j.",
     description:
-      "Platform temu balik informasi mutakhir yang menggabungkan Graph Retrieval-Augmented Generation (GraphRAG) dengan Knowledge Graphs berbasis Neo4j untuk memahami relasi makna dan konteks riset dokumen akademik secara mendalam.",
+      "Platform temu balik informasi yang menggabungkan Graph Retrieval-Augmented Generation (GraphRAG) dan Knowledge Graph Neo4j untuk memahami konteks riset dokumen akademik secara mendalam.",
     longDescription:
-      "Proyek ini merupakan riset skripsi di Program Studi Teknik Informatika Universitas Trunodjoyo Madura untuk mengatasi keterbatasan pencarian teks konvensional. Dokumen skripsi diurai dan ditransformasikan ke dalam struktur graf pengetahuan (Knowledge Graph) menggunakan basis data Neo4j.\n\nDengan memadukan Large Language Model (LLM) dan pendekatan GraphRAG, mesin pencari ini mampu memetakan keterkaitan antartopik, penulis, algoritma, dan metodologi, sehingga menghasilkan jawaban serta rangkuman akademis kontekstual melalui antarmuka interaktif Streamlit.",
+      "Proyek riset tugas akhir di Program Studi Teknik Informatika Universitas Trunodjoyo Madura ini dirancang untuk mengatasi keterbatasan pencarian kata kunci konvensional. Dokumen skripsi diurai dan ditransformasikan menjadi struktur graf pengetahuan (Knowledge Graph) di dalam basis data Neo4j.\n\nDengan memadukan Large Language Model (LLM) dan algoritma GraphRAG, sistem memetakan relasi antar-topik, penulis, algoritma, serta metodologi penelitian untuk menghasilkan rangkuman akademis yang kontekstual melalui antarmuka Streamlit.",
     details:
-      "Sistem menggunakan Python sebagai bahasa inti analisis data, PyTorch dan Scikit-Learn untuk pemrosesan NLP, basis data graf Neo4j untuk penelusuran relasi semantik berkecepatan tinggi, serta Streamlit Cloud untuk menyajikan visualisasi graf interaktif.",
+      "Dikembangkan menggunakan Python sebagai bahasa inti, PyTorch dan Scikit-Learn untuk pemrosesan NLP, basis data graf Neo4j untuk traversal relasi semantik berkecepatan tinggi, serta Streamlit Cloud untuk visualisasi graf interaktif.",
     createdAt: "Februari 2026",
     features: [
       "Pipeline Cerdas Graph Retrieval-Augmented Generation (GraphRAG)",
@@ -110,13 +110,13 @@ export const projectList: ProjectItem[] = [
     title: "TravelKita",
     category: "Platform Reservasi & E-Ticketing",
     shortDescription:
-      "Platform reservasi tiket penerbangan komersial modern yang dilengkapi gateway pembayaran Midtrans Snap, sinkronisasi kursi real-time via Supabase WebSocket, radar penerbangan FIDS langsung, dan dashboard admin terpadu.",
+      "Platform reservasi tiket pesawat modern berbasis Next.js 16 dengan sinkronisasi kursi real-time Supabase, pembayaran Midtrans Snap, dan radar FIDS.",
     description:
-      "TravelKita adalah platform pemesanan tiket pesawat modern berbasis Next.js 16 dan React 19 yang menghadirkan alur reservasi interaktif, integrasi pembayaran digital Midtrans, dan pemantauan status penerbangan real-time.",
+      "TravelKita adalah platform pemesanan tiket pesawat berbasis Next.js 16 dan React 19 yang menghadirkan alur reservasi interaktif, pembayaran digital Midtrans, dan pemantauan jadwal penerbangan.",
     longDescription:
-      "TravelKita dirancang untuk menghadirkan pengalaman reservasi tiket pesawat komersial yang cepat, transparan, dan terintegrasi. Dibangun menggunakan Next.js 16 App Router dan React 19, platform ini mengandalkan Supabase WebSocket untuk sinkronisasi denah kursi kabin (seat mapping) secara real-time antarpengguna.\n\nTransaksi pembayaran ditangani melalui gateway Midtrans Snap yang aman dan multichannel. Selain itu, tersedia radar Flight Information Display System (FIDS) langsung dan panel back-office administrator untuk mengelola maskapai, jadwal rute, hingga validasi e-ticket otomatis.",
+      "TravelKita dirancang untuk menghadirkan pengalaman pemesanan tiket penerbangan komersial yang cepat, transparan, dan terintegrasi. Platform ini memanfaatkan Supabase WebSocket agar pemilihan dan ketersediaan denah kursi kabin (seat mapping) tersinkronisasi secara real-time antar-pengguna.\n\nTransaksi pembayaran ditangani melalui gateway Midtrans Snap yang mendukung berbagai kanal pembayaran aman. Sistem juga dilengkapi radar Flight Information Display System (FIDS) langsung serta panel back-office admin untuk mengelola maskapai, rute jadwal, dan validasi e-ticket otomatis.",
     details:
-      "Arsitektur frontend memanfaatkan Next.js 16 Server Components dan React 19 untuk performa muat maksimal, TypeScript guna menjamin keamanan tipe data, Tailwind CSS untuk tata letak responsif, serta webhook Midtrans bersama Supabase Realtime Channel untuk pembaruan status transaksi dan kursi secara instan.",
+      "Arsitektur aplikasi memanfaatkan Next.js 16 Server Components, React 19, TypeScript, Tailwind CSS, Supabase PostgreSQL Realtime Channel untuk state kursi kabin, serta integrasi webhook Midtrans untuk verifikasi pembayaran instan.",
     createdAt: "Januari 2026",
     features: [
       "Pemilihan & Sinkronisasi Kursi Kabin Pesawat Real-Time (Supabase WebSocket)",
@@ -136,13 +136,13 @@ export const projectList: ProjectItem[] = [
     title: "Klasifikasi Tugas Akhir Naive Bayes",
     category: "Machine Learning & NLP",
     shortDescription:
-      "Aplikasi cerdas klasifikasi teks abstrak tugas akhir menggunakan algoritma Multinomial Naive Bayes dan ekstraksi fitur TF-IDF untuk memetakan bidang peminatan riset Teknik Informatika secara akurat.",
+      "Aplikasi klasifikasi teks abstrak tugas akhir Teknik Informatika menggunakan algoritma Multinomial Naive Bayes dan ekstraksi fitur TF-IDF.",
     description:
-      "Sistem otomasi analisis teks berbasis Machine Learning dan Natural Language Processing (NLP) yang mengklasifikasikan abstrak skripsi ke dalam rumpun keilmuan Teknik Informatika secara instan dan objektif.",
+      "Sistem klasifikasi teks berbasis Machine Learning dan Natural Language Processing (NLP) untuk memetakan abstrak skripsi ke rumpun bidang minat Teknik Informatika secara objektif.",
     longDescription:
-      "Aplikasi ini mengotomatisasi pengelompokan topik skripsi mahasiswa Teknik Informatika ke dalam empat bidang minat keilmuan: Kecerdasan Komputasi, Komputasi Bahasa Alami, Sistem Terdistribusi & Jaringan, serta Teknologi Perangkat Lunak.\n\nPipeline pemrosesan teks NLP mencakup tahap case folding, tokenizing, stopword removal, dan stemming bahasa Indonesia menggunakan pustaka Sastrawi. Selanjutnya, kata dibobotkan dengan metode TF-IDF dan diklasifikasikan memakai algoritma Multinomial Naive Bayes melalui antarmuka interaktif Streamlit.",
+      "Aplikasi ini mengotomatisasi pengelompokan topik tugas akhir mahasiswa Teknik Informatika ke dalam empat bidang minat: Kecerdasan Komputasi, Komputasi Bahasa Alami, Sistem Terdistribusi dan Jaringan, serta Teknologi Perangkat Lunak.\n\nTeks abstrak diproses melalui tahapan NLP lengkap (case folding, tokenizing, stopword removal, dan stemming Sastrawi), lalu diberi pembobotan kata TF-IDF sebelum diklasifikasikan oleh algoritma Multinomial Naive Bayes lewat antarmuka pengujian interaktif di Streamlit.",
     details:
-      "Sistem dibangun dengan Python menggunakan Scikit-Learn untuk pemodelan Multinomial Naive Bayes dan TfidfVectorizer, Sastrawi serta NLTK untuk preprocessing teks bahasa Indonesia, Pandas dan NumPy untuk manipulasi dataset, dan Streamlit sebagai antarmuka web pengujian abstrak.",
+      "Dibangun dengan Python, Scikit-Learn untuk pemodelan Multinomial Naive Bayes dan TfidfVectorizer, Sastrawi serta NLTK untuk prapemrosesan teks bahasa Indonesia, Pandas dan NumPy untuk pengolahan korpus, serta Streamlit untuk antarmuka web.",
     createdAt: "November 2025",
     features: [
       "Ekstraksi Fitur Pembobotan Kata Term Frequency - Inverse Document Frequency (TF-IDF)",
@@ -162,13 +162,13 @@ export const projectList: ProjectItem[] = [
     title: "Sakuin",
     category: "Progressive Web App & Finansial",
     shortDescription:
-      "Aplikasi pengelolaan keuangan pribadi berbasis Progressive Web App (PWA) dengan integrasi pemindai struk otomatis OCR Receipt Scanner, manajemen arus kas & anggaran bulanan, serta autentikasi aman Google OAuth.",
+      "Aplikasi pengelola keuangan pribadi berbasis Progressive Web App (PWA) dengan pemindai struk otomatis OCR, manajemen anggaran, dan Google OAuth.",
     description:
-      "Sakuin adalah asisten finansial digital berbasis web dan mobile PWA yang membantu pengguna mencatat pengeluaran, memindai struk belanja secara otomatis, dan mengontrol alokasi anggaran bulanan secara teratur.",
+      "Sakuin adalah asisten finansial digital berbasis Progressive Web App (PWA) yang memudahkan pengguna mencatat pengeluaran, memindai struk belanja otomatis, dan mengatur anggaran bulanan.",
     longDescription:
-      "Sakuin (Pengelola Uang Saku) dirancang sebagai asisten finansial modern yang ringan, intuitif, dan dapat diinstal langsung di smartphone sebagai Progressive Web App (PWA). Aplikasi ini menyederhanakan pencatatan pengeluaran lewat fitur pemindai struk berbasis Optical Character Recognition (OCR) yang membaca item dan total belanja secara otomatis.\n\nSelain pencatatan transaksi, Sakuin menyediakan pengaturan anggaran per kategori (budgeting), pelacakan target tabungan (wishlist), serta grafik arus kas interaktif. Seluruh data pengguna tersimpan aman di MongoDB Atlas dengan dukungan login Google OAuth.",
+      "Sakuin (Pengelola Uang Saku) dirancang sebagai aplikasi keuangan yang ringan, intuitif, dan dapat diinstal langsung ke perangkat mobile sebagai Progressive Web App (PWA). Pengguna cukup memindai foto struk belanja melalui fitur Optical Character Recognition (OCR) untuk mengekstrak daftar item dan total nominal tanpa mengetik manual.\n\nSelain pencatatan transaksi harian, aplikasi ini menyediakan pengaturan anggaran per kategori, pelacakan target tabungan (wishlist), grafik arus kas interaktif, serta autentikasi Google OAuth yang tersinkronisasi dengan basis data cloud MongoDB.",
     details:
-      "Frontend dibangun memakai React, Vite, dan Tailwind CSS dengan dukungan PWA (Service Worker & Web App Manifest). Sisi backend memanfaatkan Node.js, Express.js, dan MongoDB Atlas untuk penyimpanan transaksi, Tesseract OCR API untuk pemindaian teks struk, serta Google OAuth 2.0 untuk autentikasi pengguna.",
+      "Frontend dibangun dengan React, Vite, Tailwind CSS, serta Service Worker PWA, sedangkan backend menggunakan Node.js, Express.js, MongoDB Atlas, Tesseract OCR API untuk pembacaan struk, dan Google OAuth 2.0.",
     createdAt: "Desember 2025",
     features: [
       "Pemindai Struk Belanja Otomatis Berbasis Optical Character Recognition (OCR)",
